@@ -1,0 +1,59 @@
+\documentclass[tikz,border=10pt]{article}
+\newcommand{\course}{Calculus}
+\usepackage[margin=1.5in]{geometry}
+\newcommand{\instructor}{Athan Zhang \& Jeffrey Chen}
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\pgfplotsset{width=10cm, compat=1.9}
+\usepackage[inline]{enumitem}
+
+\usepgfplotslibrary{external}
+\tikzexternalize
+\pgfplotsset{compat=1.12}
+
+% Document Body
+\begin{document}
+
+% Title
+\begin{center}
+\textbf{\Huge Problem Set 01} % Replace "#" with the problem set number
+\end{center}
+
+% Course and Instructor Information
+\begin{flushleft}
+\emph{Course:} \course \\
+\emph{Instructors:} \instructor \\
+\end{flushleft}
+
+% Problem 1
+\section*{Problem 1}
+Does $\lim_{x \to 4} \frac{\sqrt{x}-2}{x-4}$ exist? If so, evaluate it. \textit{Hint:} try to factor the function.
+
+\section*{Problem 2}
+Categorize the end behavior of the function $\frac{e^x-e^{-x}}{2}$. 
+
+
+\section*{Problem 3}
+Find and categorize all the discontinuities of the function $\frac{5x^3}{x^3+2x^2-8x}$. 
+
+
+\section*{Problem 4}
+Find and categorize all the discontinuities of the function $cot(x)$. What about $sin(x)cot(x)$?
+
+
+\section*{Problem 5}
+Jake is driving his car. His velocity can be modeled as $t^3-t^2+10t$, where $t$ represents the number of seconds elapsed since he started driving. What is his average velocity over the first $10$ seconds of him driving?
+
+\section*{Problem 6}
+Sarah is driving her car. Her car's position can be modeled as $t^2+4t+10$, where $t$ represents the number of minutes elapsed since she started driving. By the time $t$ she has drove $42$ miles, what is her average velocity from the start to $t$?
+
+\section*{Problem 7}
+The population of Town A can be modeled as $P(t) = e^{0.3t}+500$, where $t$ represents the number of years since Town A's founding. What is the average rate of Town A's population growth over the first $10$ years since its founding, to the nearest hundredth?
+
+\section*{Problem 8}
+What is the slope of the line tangent to the curve $x^3+2x^2+1$ at $x=1$?
+
+\section*{Problem 9}
+Athan is driving at $2t^2+12t+2$ miles per hour, where $t$ represents the number of minutes he has been driving. By the time he reaches a velocity of $130$ miles per hour, what was his instantaneous acceleration exactly $3$ minutes ago?
+
+\end{document}

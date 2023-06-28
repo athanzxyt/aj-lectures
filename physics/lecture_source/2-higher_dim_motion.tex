@@ -1,0 +1,165 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{parskip}
+\usepackage{amsmath}
+
+\usepackage{pgfplots}
+\pgfplotsset{width=10cm, compat=1.9}
+\usetikzlibrary{angles, quotes}
+
+
+\begin{document}
+
+\textbf{\Huge Higher Dimensional Motion}
+
+Athan Zhang \& Jeffrey Chen
+
+\section{Vectors}
+
+In the previous section, we focused primarily on a one-dimensional space. However, the natural world is multi-dimensional. Vectors are used to understand interactions between objects. We denote vectors by letters with an overhead arrow, $\Vec{A}$. The magnitude of $\Vec{A}$ is written $|\Vec{A}|$, or simply $A$.
+
+\subsection{Vector Components}
+
+A vector can be broken up into its components with respect to the axis of its dimensions. For the sake of simplicity, we will only use two-dimensional vectors moving forward. However, remember that there is an added axis for each higher dimension.
+
+\begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    width=6cm, height=6cm,
+    xmin=0, xmax=2,
+    ymin=0, ymax=2,
+    axis lines=center,
+    ticks=none,
+    ]
+    % Vector A
+    \draw[->, thick, color=red] (0, 0) -- (150, 120) node[right]{$\Vec{A}$};
+    
+    % Dotted lines for x and y components
+    \draw[dotted] (150, 0) -- (150, 120);
+    \draw[dotted] (0, 120) -- (150, 120);
+    
+    % Labels for x and y components
+    \node at (170, 60) {$A_x$};
+    \node at (60, 120) {$A_y$};
+
+    
+    % Angle
+    \coordinate (O) at (0,0);
+    \coordinate (A) at (150,120);
+    \coordinate (Ax) at (150,0);
+    \pic [draw, angle radius=0.5cm, "$\theta$", angle eccentricity=1.5] {angle = Ax--O--A};
+ 
+  \end{axis}
+\end{tikzpicture}
+\end{center}
+
+The vector $\Vec{A}$ can be broken up into its $x$ and $y$ components. This is calculated by 
+\begin{align*}
+    A_{x} &= A\cos{\theta} \\
+    A_{y} &= A\sin{\theta} \\
+\end{align*}
+
+Remember that a vector $\Vec{A}$ can be written as
+\begin{align*}
+    \Vec{A} = \langle A_x, A_y, A_z \rangle = A_x \hat{i} + A_y \hat{j} + A_z \hat{k}
+\end{align*}
+
+If we know $A_{x}$ and $A_{y}$, we can find the angle $\theta$ from
+\begin{align*}
+    \tan{\theta} = \frac{A_y}{A_x},\hspace{1cm}\theta = \tan^{-1}\frac{A_y}{A_x}    
+\end{align*}
+The magnitude of $A$ can be calculated from the Pythagorean theorem
+\begin{align*}
+    A = \sqrt{A_{x}^{2} + A_{y}^{2}}
+\end{align*}
+Again, for higher dimension vectors, the same concepts apply. For example, the magnitude of a n$\textsuperscript{th}$-dimensional vector is calculated as
+\begin{align*}
+    A = \sqrt{A_{1}^{2} + A_{2}^{2} +... + A_{n-1}^{2} +A_{n}^{2}}
+\end{align*}
+
+\subsection{Operations on Vectors}
+
+Vectors can be added, subtracted, or multiplied by a scalar. Vector addition is the process of combining two vectors to obtain a new vector that represents their resultant. This operation can be visualized using the parallelogram method or the head-to-tail method. For example, to add vectors \(\Vec{A}\) and \(\Vec{B}\), we place the tail of \(\Vec{B}\) at the head of \(\Vec{A}\) and draw a vector from the tail of \(\Vec{A}\) to the head of \(\Vec{B}\). The resulting vector, denoted as \(\Vec{C}\), represents the sum of \(\Vec{A}\) and \(\Vec{B}\). Mathematically, vector addition can be performed by adding the corresponding components of the vectors. For instance, if \(\Vec{A} = (A_x, A_y)\) and \(\Vec{B} = (B_x, B_y)\), then \(\Vec{A} + \Vec{B} = (A_x + B_x, A_y + B_y)\).
+
+Vector subtraction is a similar operation to vector addition, but it involves subtracting one vector from another. To subtract vector \(\Vec{B}\) from vector \(\Vec{A}\), we reverse the direction of \(\Vec{B}\) and add it to \(\Vec{A}\). 
+
+Scalar multiplication involves scaling a vector by a scalar quantity. When a vector \(\Vec{A}\) is multiplied by a scalar \(k\), the resulting vector \(\Vec{B}\) has the same direction as \(\Vec{A}\) but a magnitude scaled by the value of \(k\). Scalar multiplication is useful for stretching or shrinking vectors. If \(\Vec{A} = (A_x, A_y)\), then scalar multiplication can be computed as \(\Vec{B} = (k \cdot A_x, k \cdot A_y)\).
+
+\section{Relative Velocity}
+
+The motion of a particle can be described with respect to any other object, depending on the reference frame. If a particle moves with velocity $\Vec{v_{pA}}$ relative to a coordinate system $A$, which in turn moves with velocity $\Vec{v_{AB}}$ relative to another coordinate system $B$, the velocity of the particle relative to $B$ is 
+\begin{align*}
+    \Vec{v_{pB}} = \Vec{v_{pA}} + \Vec{v_{AB}}
+\end{align*}
+
+\subsection{Theory of Relativity Exact Formula}
+
+However, the previous formula is only a mere approximation. The exact expression for relative velocities is
+\begin{align*}
+    \Vec{v_{pB}} = \frac{\Vec{v_{pA}} + \Vec{v_{AB}}}{1 + \frac{\Vec{v_{pA}}\Vec{v_{AB}}}{c^{2}}}
+\end{align*}
+Where $c = 3\times 10^{8}$ m/s and is the velocity of light in a vacuum. This equation is really only applicable for much higher velocities, and the approximated equation is helpful for everyday use.
+
+\section{Projectile Motion}
+
+Let's imagine a scenario where a particle is launched with initial speed $v_{0}$ at an angle $\theta$ with the horizontal axis. It is launched from a point $(x_{0}, y_{0})$ where $y$ is positive upward and $x$ is positive to the right. Then, the initial velocity has components:
+\begin{align*}
+    \Vec{v_{0}} = \langle v_{0}\cos{\theta}, v_{0}\sin{\theta} \rangle
+\end{align*}
+In the absence of air resistance, the acceleration from gravity is purely vertically downward, so the acceleration of the particle can be written as
+\begin{align*}
+    \Vec{a} = \langle 0, -g \rangle
+\end{align*}
+Since the acceleration due to gravity is constant, we can use the kinematic equations to solve for the position of the particles as a function of time. The $x$ component of the velocity is constant because there is no horizontal acceleration:
+\begin{align*}
+    v_{x} = v_{0x}
+\end{align*}
+And the $y$ component varies with time according to the first kinematic equation:
+\begin{align*}
+    v_{y} = v_{0y} - gt
+\end{align*}
+Notice that the horizontal and vertical components of projectile motion are independent. The displacements of $x$ and $y$ are given by:
+\begin{align*}
+    x(t) &= x_{0} + v_{0x}t = x_{0} + v_{0}\cos{\theta}t\\
+    y(t) &= y_{0} + v_{0y}t - \frac{1}{2}gt^{2} = y_{0} + v_{0}\sin{\theta}t - \frac{1}{2}gt^{2}
+\end{align*}
+
+
+\subsection{Derivation of Maximum Height}
+
+Using the kinematic equations, we can determine the characteristics of a particle moving through projectile motion. 
+
+At the very top of the trajectory of a projectile, its vertical velocity will be zero. This is intuitive since if there was any vertical velocity, the projectile would be below the point of maximum height. We can use the fourth kinematic equation to thus figure out the maximum height a projectile will travel.
+\begin{align*}
+    v^{2} &= v_0^{2} + 2a\Delta x \\
+    0 &= (v_{0}\sin{\theta})^2 - 2gH \\
+    2gH &= (v_{0}\sin{\theta})^2 \\
+    H &= \frac{(v_{0}\sin{\theta})^2}{2g}
+\end{align*}
+
+\subsection{Derivation of Maximum Free-fall Range}
+
+Let's now determine the formula to calculate the maximum range a projectile will travel, given that the initial and final positions are at the same level. 
+
+First, we must figure out how long the projectile stays in motion. To do this, we can calculate the time the projectile takes to reach the top of its trajectory and multiply that by two since it is symmetric going up and down. Once again, the vertical velocity at the top of its trajectory is zero. We can use the first kinematic equation to calculate this time
+\begin{align*}
+    v &= v_0 + at \\
+    0 &= v_0\sin{\theta} - gt \\
+    gt &= v_0\sin{\theta}\\
+    t &= \frac{v_0\sin{\theta}}{g}
+\end{align*}
+Recall that this $t$ is only half the time of the flight of a projectile. The actual amount of time the projectile spends suspended in air is $\frac{2v_0\sin{\theta}}{g}$. 
+
+Now that we know how long the projectile stays in air, we can use this with its horizontal velocity (which stays constant since there is no horizontal acceleration) to calculate the horizontal range at which the projectile travels.
+\begin{align*}
+    \Delta x &= v_0 t + \frac{1}{2}at^2 \\
+    R &= v_{0x}t \\
+      &= (v_{0}\cos{\theta})\left(\frac{2v_0\sin{\theta}}{g}\right) \\
+      &= \frac{v_{0}^{2}(2\sin{\theta}\cos{\theta})}{g} \\
+      &= \frac{v_{0}^{2}\sin{2\theta}}{g}
+\end{align*}
+One important thing to notice is that to maximize the range of a projectile, we want to maximize the maximum range equation. This is done when the $\sin$ term is maximized, which is achieved when $\theta = 45^{\circ}$. 
+
+\end{document}

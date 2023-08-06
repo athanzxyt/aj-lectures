@@ -1,0 +1,175 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{parskip}
+\usepackage{amsmath}
+
+\usepackage{pgfplots}
+\pgfplotsset{width=10cm, compat=1.9}
+\usetikzlibrary{angles, quotes}
+
+\begin{document}
+
+\textbf{\Huge Momentum}
+
+Athan Zhang \& Jeffrey Chen
+
+\section{Center of Mass}
+
+We've previously represented objects as particles in a system; that is, we've used a single point in space to describe the entire body of the object. However, it's unrealistic to model real physical bodies in such a way. 
+
+We can justify this process by showing that there is one point of a system, the \textbf{center of mass}, that moves as if all the mass of the system were concentrated at that point and that all the external forces acting on the system were acting exclusively on that point. Remember that a system can be a single large object or a collection of bodies.
+
+Consider a simple system of two particles in one direction. If two point masses, $m_1$ and $m_2$, have coordinates $x_1$ and $x_2$ on the x-axis, then the center-of-mass position $x_{cm}$ can be calculated with
+\begin{align*}
+    (m_1 + m_2)x_{cm} = m_1 x_1 + m_2 x_2
+\end{align*}
+
+% Insert drawing of two ball masses along x-axis that are same size and draw a point in the center labeled as cm
+
+In the case of these two particles, the center of mass lies at some point on the line between the particles. If they have equal masses, the center of mass is in the exact middle. However, if the particles are of unequal mass, the center of mass is closer to the more massive particle.
+
+% Insert same drawing except one ball is larger and the center of mass moved closer to it
+
+We can establish a coordinate system in any way we like. To make this problem easier, we can choose the position of $m_1$ to be the origin. Then, we only need to know the distance between the two masses.
+\begin{align*}
+    (m_1 + m_2)x_{cm} &= m_1 (0) + m_2 d \\
+    x_{cm} &= \frac{m_2}{m_1 + m_2}d
+\end{align*}
+
+We can generalize from two particles in one dimension to a system of many particles in one dimension.
+\begin{align*}
+    Mx_{cm} = m_1 x_1 + \dots + m_n x_n = \sum_{i}^n m_i x_i
+\end{align*}
+To extrapolate to multiple dimensions, we simply repeat the process for the other component, such as the y-components of position and z-components. If we generalize the position of an object with the vector $\Vec{r}$, we can determine the center-of-mass of an object as
+\begin{align*}
+    M\Vec{r}_{cm} = \sum_{i} m_i \Vec{r}_i
+\end{align*}
+If we want to find the center of mass of an object, assuming it is continuous, we can use an integral
+\begin{align*}
+    M\Vec{r}_{cm} = \int \Vec{r}\;dm
+\end{align*}
+where $dm$ is an element of mass at the location of $\Vec{r}$.
+
+\subsection{Center of Mass by Parts}
+
+Because we can think of the center of mass of a system as the average of a bunch of point masses, we can break up an object into multiple parts, find the point center-of-masses for each part, and then find the center of mass from those parts to find the center of mass for the whole object, rather than integrating over the object.
+
+\subsection{Center of Mass from Gravity}
+
+Since we know we can treat the body of an object as a point in space, we know the object's gravitational potential energy depends on that point's position. We can then use this knowledge to locate the center of mass of an object experimentally.
+
+Say, for example, we have an irregularly-shaped object. By attaching a string to one point and hanging it from the ceiling, the object will naturally orient itself in a way that minimizes the gravitational potential energy. This occurs when the center of mass is directly below the pivot since this would be when the center of mass is closest to the ground. We then draw a line on the object, parallel downwards from the pivot. If we repeat this process with a new pivot and redraw another line, the intersection of those two lines will be the center of mass of the object.
+
+\section{Motion of Center of Mass}
+
+We don't always imagine an object as only its center of mass. For example, if we tossed a baton into the air, it would appear to have a very complicated trajectory, considering that the baton would be spinning. However, if we mapped only the center of mass of the baton, we would find that it's actually following a parabolic trajectory, just like what we learned in kinematics. The rotation of the baton doesn't seem to matter, which we will discuss in later sections.
+
+In general, the acceleration of the center of mass fo a system of particles equals the net external force acting on the system divided by the total mass of the system. 
+\begin{align*}
+    \Vec{F}_{net,ext} = \sum_i \Vec{F}_{i,ext} = M\Vec{a}_{cm}
+\end{align*}
+This means that the center of mass of a system moves like a particle of the total sum of the system, under the influence of the net external force acting on the system.
+
+Keep in mind that this only applies to external forces. Say for example that you and a friend were two different masses and sat on top of a stationary boat on a lake. If you got up and switched places, the boat would move along the lake to maintain the center-of-mass of the boat-people system at the same place. Thus, the external force is zero, but the internal force of you two moving around is nonzero.
+
+\section{Momentum}
+
+A particle's momentum is defined as the product of its mass and velocity
+\begin{align*}
+    \Vec{p} = m\Vec{v}
+\end{align*}
+Momentum is a vector quantity that may be thought of as a measurement of the effort needed to bring a particle to rest. For example, a heavy truck moving at the same speed as a small car will require a greater force to stop than the small car. 
+
+Newton's second law can be written in terms of the momentum of a particle. By differentiating the definition of momentum, we get
+\begin{align}
+    \frac{d\Vec{p}}{dt} = \frac{d(m\Vec{v})}{dt} = m \frac{\Vec{v}}{dt} = m\Vec{a}
+\end{align}
+Thus
+\begin{align*}
+    \Vec{F}_{net} = \frac{d\Vec{p}}{dt}
+\end{align*}
+
+The total momentum of a system of many particles is the sum of the momenta of the individual particles
+\begin{align*}
+    \Vec{p}_{net} = \sum_i m_i \Vec{v}_i = \sum_i \Vec{p}_i
+\end{align*}
+We can once again represent the entire system with its center of mass
+\begin{align*}
+    \Vec{p}_{net} = M\Vec{v}_{cm}
+\end{align*}
+and if we differentiate, we get
+\begin{align*}
+    \Vec{F}_{net,ext} = \frac{d\Vec{p}_{net}}{dt}
+\end{align*}
+If the net external force on a system is zero, the total momentum of the system remains constant. This is known as the \textbf{law of conservation of momentum}.
+
+This law is often more useful than the law of conservation of mechanical energy because internal forces in a system often are not conservative. Though internal forces can change the total mechanical energy of the system, they have no effect on the system's total momentum. 
+
+\section{Collisions}
+
+In a collision between two objects, they approach and interact very strongly for a very short time. During the brief time of a collision, any external forces are much smaller than the forces of interaction between the objects. Thus, the only important forces acting on the objects are the interaction forces, which are equal and opposite. As we know, the total momentum of the system remains unchanged. 
+
+\subsection{Impulse}
+
+Consider a plot of the magnitude of force versus time graph of a collision between two objects. During the collision time of $\Delta t = t_f - t_i$, the force is large. For any other time, the force is negligibly small. The force under this curve is called the \textbf{impulse} and is defined as
+\begin{align*}
+    \Vec{I} = \int_{t_i}^{t_f} \Vec{F}\;dt
+\end{align*}
+Since the unit of impulse is a Newton-second, we can think of the impulse as the total change in momentum over the time interval.
+\begin{align*}
+    \Vec{I}_{net} &= \int_{t_i}^{t_f} \Vec{F}_{net}\;dt \\
+    &= \int_{t_i}^{t_f} \frac{d\Vec{p}}{dt}dt \\
+    &= \Vec{p}_f - \Vec{p}_i \\
+    &= \Delta \Vec{p}
+\end{align*}
+
+\subsection{Elastic Collisions}
+An elastic collision is defined as a collision in which both momentum and kinetic energy are conserved. In other words, the total momentum before and after the collision is the same, and the total kinetic energy of the system is also conserved.
+
+For a one-dimensional elastic collision between two objects with masses $m_1$ and $m_2$, moving with velocities $v_1$ and $v_2$ before the collision and $v_1'$ and $v_2'$ after the collision, the conservation of momentum and kinetic energy can be expressed using the following equations:
+
+\textbf{Conservation of Momentum}:
+\begin{align*}
+    m_1v_1 + m_2v_2 = m_1v'_1 + m_2v'_2
+\end{align*}
+
+\textbf{Conservation of Kinetic Energy}:
+\begin{align*}
+    \frac{1}{2}m_1v_1^2 + \frac{1}{2}m_2v_2^2 = \frac{1}{2}m_1v'_1^2 + \frac{1}{2}m_2v'_2^2
+\end{align*}
+
+These equations allow us to solve for the final velocities $v_1'$ and $v_2'$ of the objects involved in the collision.
+
+Let's rearrange the equation from the Conservation of Kinetic Energy as
+\begin{align*}
+    m_2(v_{2}^{2} - v'_{2}^{2}) &= m_1(v'_{1}^{2} - v_{1}^{2}) \\
+    m_2(v_{2} - v'_{2})(v_2 + v'_2) &= m_1(v'_1 - v_1)(v'_1 + v_1) \\
+\end{align*}
+
+We can also rearrange our equation from the Conservation of Momentum to be
+\begin{align*}
+    m_1v_1 + m_2v_2 &= m_1v'_1 + m_2v'_2 \\
+    m_2(v_2 - v'_2) &= m_1(v'_1 - v_1) \\
+\end{align*}
+Dividing this equation from our previous equation gives us
+\begin{align*}
+    (v_2 + v'_2) &= (v'_1 + v_1) \\
+    v_2 - v_1 &= -(v'_2 - v'_1) \\
+\end{align*}
+This means that the speed of approach is the same as the speed of recession.
+
+\subsection{Inelastic Collisions}
+An inelastic collision is one in which kinetic energy is not conserved. An extreme case of this is called a \textbf{perfectly inelastic collision}, in which all of the kinetic energy of the center of mass of the system is converted into thermal or internal energy of the system, and the two objects stick together after the collision.
+
+Similar to elastic collisions, we can analyze one-dimensional inelastic collisions using the conservation of momentum. However, we no longer have the conservation of kinetic energy.
+
+For a one-dimensional inelastic collision between two objects, the conservation of momentum equation is given by:
+\[
+m_1v_1 + m_2v_2 = (m_1 + m_2)v'
+\]
+
+In this case, $v'$ represents the common final velocity of the two objects after the collision. To determine the value of $v'$, additional information or equations related to the nature of the collision, such as coefficients of restitution or energy dissipation, may be required.
+
+\end{document}

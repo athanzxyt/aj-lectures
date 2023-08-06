@@ -1,0 +1,231 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{parskip}
+\usepackage{amsmath}
+
+\usepackage{pgfplots}
+\pgfplotsset{width=10cm, compat=1.9}
+\usetikzlibrary{angles, quotes}
+
+\begin{document}
+
+\textbf{\Huge Gravitation}
+
+Athan Zhang \& Jeffrey Chen
+
+\section{Kepler's Laws}
+
+As we know, gravity is one of the four fundamental forces. It is, however, the weakest of them. It is negligible in the interactions of elementary particles and thus plays no role in molecules, atoms, and nuclei. The forces in this domain are carried out by the nuclear forces. Yet, when we consider very large objects, such as moons, planets, and stars, gravity is of primary importance. 
+
+Johannes Kepler was a famous astronomer that discovered that the paths of the planets about the sun are ellipses. He also showed that the planets move faster when their orbit brings them closer to the sun and slower when their orbit takes them farther away. Finally, Kepler developed a precise mathematical relation between the period of a planet and its average distance from the sun. These rules compose \textbf{Kepler's Laws}, and are given as follows:
+\begin{enumerate}
+    \item All planets move in elliptical orbits with the sun at one focus.
+    \item A line joining any planet to the sun sweeps out equal areas in equal times.
+    \item The square of the period of any planet is proportional to the cube of the semimajor axis of its orbit. 
+\end{enumerate}
+
+\subsection{First Law}
+
+The first law states that all planets move in elliptical orbit. This will be proved later on in the section.
+
+As a reminder, an ellipse is the locus of points for which the sum of the distances from two foci is constant. For the Earth, the two foci are almost both at the sun, which means the Earth's orbit is nearly perfectly circular. The distance to the sun at the perihelion (closest point) is $1.48\times10^{11}$ m and the distance to the sun at the aphelion (farthest point) is $1.52 \times 10^{11}$ m. The semimajor axis, which is the average of these distances, is $1.50 \times 10^{11}$ m. Physicists usually call this distance 1 AU, or astronomical unit.
+\begin{align*}
+    1 AU = 1.50 \times 10^{11} \text{ m} = 93.0 \times 10^{6} \text{ miles}
+\end{align*}
+
+We typically use AU when dealing with problems that use distances in our solar system. However, for larger problems, we typically use the light-year, which is the distance traveled by light in one year and is given as $9.46\times 10^{15}$ m.
+
+\subsection{Second Law}
+
+The second law states that a planet moves faster when it is closer to the sun than farther away. This means that the area swept out by the radius vector in a given time interval is the same throughout the orbit. This is because, though it is closer to the sun, it will move faster, covering the same area. This law can be proven by the law of conservation of angular momentum, which will be shown later.
+
+\subsection{Third Law}
+
+Kepler's third law relates the period of any planet to its mean distance from the sun, which equals the semimajor axis of its elliptical path. In algebraic form, if $R$ is the mean distance between a planet and the sun and $T$ is the planet's period of revolution, Keplter's third law states that
+\begin{align*}
+    T^2 \propto CR^3
+\end{align*}
+where the constant $C$ has the same value for all the planets. 
+
+\section{Newton's Law of Gravity}
+
+You've all heard Newton discovered gravity when an apple fell from a tree and hit his head. Now, we see the formula that he truly discovered from such a fairy tale event. Though Kepler's laws were an important first step in understanding the motion of planets, they were still just empirical rules. Newton proved that a force that varies inversely with the square of the distance between the sun and a planet results in elliptical orbits. He then made the bold assumption that this force acts between any two objects in the universe. Newton's law of gravity postulates that there is a force of attraction between each pair of objects that is proportional to the square of the distances separating them.
+\begin{align*}
+    F = G \frac{m_1 m_2}{r^2}
+\end{align*}
+where $G$ is the universal gravitational constant and has the value
+\begin{align*}
+    G = 6.67 \times 10^{-11} \text{ N}\cdot\text{m}^2 / \text{kg}^2
+\end{align*}
+However, we know that force is a vector, so the force exerted by $m_1$ on $m_2$ is given as
+\begin{align*}
+    \Vec{F}_{1,2} = -G\frac{m_1 m_2}{r^2_{1,2}}\hat{r}_{1,2}
+\end{align*}
+where $\hat{r}_{1,2}$ is the unit vector pointing from mass 1 to mass 2. The force $\Vec{F}_{2,1}$ is equal and opposite to this value. This means that two objects exert equal and opposite gravitational forces on one another. 
+
+\subsection{Measurement of the Gravitational Constant (G)}
+
+Henry Cavendish measured the gravitational constant (G) in his 1797-1798 torsion balance experiment. He used a delicate apparatus with two small lead spheres on opposite sides of a larger one. The system was suspended horizontally, and the tiny gravitational attraction caused an angular displacement. By measuring the deflection and knowing the masses and dimensions, Cavendish calculated G, providing crucial insights into the force of gravity between masses.
+
+\section{Derivation of Kepler's Laws}
+
+\subsection{First Law}
+
+Newton showed that when an object such as a planet or comet moves around a 1/$r^2$ force center such as the sun, the object's path is a conic. Since the parabolic and hyperbolic paths apply to objects that make one pass by the sun and never return, we know that planets in closed orbit follow an elliptical or circular orbit. 
+
+\subsection{Second Law}
+
+In a time $dt$, a planet moves a distance $vdt$ and sweeps out the area created by half the area of the parallelogram formed by the vectors $\Vec{r}$ and $\Vec{v}dt$, which is the cross product $|\Vec{r}\times\Vec{v} dt|$. Thus the area is
+\begin{align*}
+    dA = \frac{1}{2}|\Vec{r}\times\Vec{v}\;dt| = \frac{1}{2m} |\Vec{r}\times m\Vec{v}\;dt|
+\end{align*}
+We can use our definition of angular momentum to get
+\begin{align*}
+    dA = \frac{1}{2m}L\;dt
+\end{align*}
+Since the force on a planet is along the line from the planet to the sun, it is perpendicular to the direction of motion. This means it exerts no torque. Thus, the angular momentum of the planet is conserved, which means that $L$ is constant. Therefore, the area swept out in a given time interval $dt$ is the same for all parts of the orbit.
+
+\subsection{Third Law}
+
+Let's take a special case where a planet orbits the sun in a perfectly circular orbit. Then, that means the planet is in a perfectly circular motion, which means the only acceleration on the planet is from the sun and must equal centripetal acceleration. 
+\begin{align*}
+    G\frac{M_s m_p}{r^2} = m_p \frac{v^2}{r}
+\end{align*}
+where $M_s$ is the mass of the sun, $m_p$ is the mass of the planet, and $r$ is the distance between the two. If we solve for $v$, we get
+\begin{align*}
+    v^2 = \frac{GM_s}{r}
+\end{align*}
+Since we know that the planet moves a distance of $2\pi r$ in time $T$, its speed is related to the period by
+\begin{align*}
+    v = \frac{2\pi r}{T}
+\end{align*}
+We can set these two equations equal to each other to get
+\begin{align*}
+    v^2 = \frac{4\pi^2 r^2}{T^2} = \frac{GM_s}{r}
+\end{align*}
+or
+\begin{align*}
+    T^2 = \frac{4\pi^2}{GM_s}r^3
+\end{align*}
+In this case, we can see that $C = \frac{4\pi^2}{GM_s}$. For the more general case of elliptical orbits, the proof is much more complex. In such cases, the distance $r$ is given as the mean distance from the sun or the semimajor axis $a$.
+
+\section{Gravitational Potential Energy}
+
+Near the surface of the earth, the gravitational force exerted by the earth on an object is constant because the distance to the center of the earth is given as $r = R_E + h$ and is always approximately $R_E$ since $ h << R_E$. The potential energy of an object near the earth's surface is $mg(r - R_E) = mgh$ where we have chosen $U = 0$ at the earth's surface, $r = R_E$. When we are far from the surface, we must consider that the gravitational force exerted by the earth is not uniform but decreases as $1/r^2$. 
+
+Using the general definition of potential energy, we get
+\begin{align*}
+    dU = - \Vec{F}\cdot d\Vec{s}
+\end{align*}
+This can be used as
+\begin{align*}
+    dY = -\left(-G \frac{M_E m}{r^2}\right)\;dr = \frac{GM_E m}{r^2}\;dr
+\end{align*}
+Integrating this gives us
+\begin{align*}
+    U = - \frac{GM_E m}{r} + U_0
+\end{align*}
+Since we only care about changes in potential energy, we can choose the potential energy to be zero at any position. While we have so far always taken the earth's surface to be zero, it wouldn't be reasonable to do so for problems that consider the earth and the sun. Thus, we typically choose $U_0 = 0$ at $r = \infty$, giving us
+\begin{align*}
+    U(r) = -\frac{GMm}{r}
+\end{align*}
+
+\subsection{Escape Speed}
+
+The idea of escaping from Earth's gravity has become a reality. We now know that a minimum initial speed, called the escape speed,d that is required for an object to escape from the Earth. 
+
+When we project an object upward from the earth with some initial kinetic energy, the kinetic energy decreases, and the potential energy increases as the object rises. Since the object starts from the surface of the Earth, it has an initial potential energy of 
+\begin{align*}
+    U = - \frac{GM_E m}{R_E}
+\end{align*}
+And since $U = 0$ at an infinite distance, the object can only have a maximum increase in potential energy of $+ \frac{GM_E m}{R_E}$. Therefore, this is the most that the kinetic energy can decrease. If the initial kinetic energy is greater than $GM_E m / R_e$, the total energy will be greater than 0, and the object will still have some kinetic energy when $r$ is infinitely far away. Thus,
+\begin{align*}
+    \frac{1}{2}mv_e^2 > \frac{GM_E m}{R_E}
+\end{align*}
+To find the minimum velocity, we set the two to be equal.
+\begin{align*}
+    \frac{1}{2}mv_e^2 &= \frac{GM_E m}{R_E} \\
+    \frac{1}{2}v_e^2 &= \frac{GM_E}{R_E} \\
+    v_e^2 &= \frac{2GM_E}{R_E} \\
+    v_e &= \sqrt{\frac{2GM_E}{R_E}}
+\end{align*}
+Since we know $g$ is the gravitational acceleration of an object near the surface of the Earth
+\begin{align*}
+    F_g = mg &= \frac{GM_E m}{R_E^2} \\
+    g &= \frac{GM_E}{R_E^2} \\
+\end{align*}
+We can rewrite the escape velocity, $v_e$, as
+\begin{align*}
+    v_e = \sqrt{2gR_E}
+\end{align*}
+If we use $g = 9.81$ m/s$^2$ and $R_E = 6.37 \times 10^6$ m, we get
+\begin{align*}
+    v_e  = \sqrt{2(9.81 \text{ m/s}^2)(6.37 \times 10^6 \text{ m})} = 11.2 \text{ km/s}
+\end{align*}
+This is the minimum initial speed required for an object to leave the earth. However, it will not escape the solar system because we have failed to consider the gravitational attraction of the sun and other planets.
+
+\subsection{Classification of Orbits}
+
+We've seen previously that the total energy of an object is important in understanding whether or not it can leave the earth's surface. The same idea applies to orbits. If we evaluate the kinetic and potential energy of an object in space with respect to the sun, we'll see whether or not it stays within the solar system or not.
+
+The potential energy of an object such as a planet or comet of mass $m$ at a distance $r$ from the sun is
+\begin{align*}
+    U(r) = - \frac{GM_s m}{r}
+\end{align*}
+We then have
+\begin{align*}
+    E = K + U = \frac{1}{2}mv^2 - \frac{GM_s m}{r}
+\end{align*}
+
+\textbf{Orbits}
+\begin{itemize}
+    \item If E $<$ 0; The system is bound.
+    \item If E $\geq$ 0: The system is unbound.
+\end{itemize}
+
+If an object is bound, that means it will stay within the solar system, either in orbit or crashing toward the sun. If it is unbound, we know it will have a parabolic or hyperbolic path and fly out of the solar system. In the case that an object is bound, the absolute value of $E$ is the binding energy and shows the energy required to add to an object in order for it to become unbound. 
+
+\section{Gravitational Field}
+
+The gravitational force exerted by a point mass $m_1$ on a second mass $m_2$ a distance $r_{1,2}$ away is given as
+\begin{align*}
+    \Vec{F}_{1,2} = -G\frac{m_1 m_2}{r^2_{1,2}}\hat{r}_{1,2}
+\end{align*}
+Since we know that anywhere is space is subject to the force of gravity from one of the masses, the idea of a \textbf{gravitational field} is used. A field is just a set of vectors in space. In this case, the gravitational field is a set of vectors in space that show the strength of gravitational attraction at that point. Since the force from gravity depends on the mass of the object it is acting on, we define the gravitational field to be this force divided by the mass.
+\begin{align*}
+    \Vec{g} = \frac{\Vec{F}}{m}
+\end{align*}
+This means that the gravitational field at any point is uniform for every object in space, regardless of its mass. While the gravitational strength may be the same, the force will be different. 
+
+If we consider the gravitational field due to multiple objects, we simply take a summation of the gravitational field of each individual object. Note that any object with matter produces a gravitational field that affects other objects.
+\begin{align*}
+    \Vec{g} = \sum \Vec{g}_i
+\end{align*}
+To find the gravitational field due to a continuous object, we find the field $d\Vec{g}$ due to a small mass element $dm$ and integrate over that object.
+\begin{align*}
+    \Vec{g} = \int d\Vec{g}
+\end{align*}
+We've seen previously that the gravitational field of the earth at a distance $r \geq R_E$ points toward the earth and is roughly given by 
+\begin{align*}
+    \Vec{g} = - \frac{GM_E}{r^2}\hat{r}
+\end{align*}
+
+\subsection{Gravitational Shell Theorem}
+
+The gravitational shell theorem is a fundamental result in classical mechanics and gravity, which states that the gravitational field inside a spherically symmetric shell of matter is zero. In other words, if an object is surrounded by a hollow spherical shell of matter, the gravitational forces experienced by the object due to the shell cancel out, resulting in no net gravitational force inside the shell.
+
+Mathematically, the gravitational field $\Vec{g}$ inside a spherical shell of mass $M$ and radius $R$ can be expressed as:
+
+\begin{align*}
+    \Vec{g} = 0 \quad \text{(inside the shell)}
+\end{align*}
+
+This means that any object placed at any point inside the hollow spherical shell will not experience any gravitational force from the shell itself.
+
+However, outside the spherical shell, the gravitational field behaves as if all the mass of the shell were concentrated at its center. This is similar to how we consider the mass of a planet or star concentrated at its center when calculating the gravitational force on objects outside the celestial body.
+
+The gravitational shell theorem has significant implications in astrophysics and celestial mechanics, as it simplifies the analysis of gravitational interactions when dealing with symmetric mass distributions, such as planets, stars, and galaxies.
+
+\end{document}

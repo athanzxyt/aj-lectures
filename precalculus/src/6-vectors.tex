@@ -1,0 +1,147 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{parskip}
+\usepackage{amsmath}
+\usepackage{subfigure}
+\usepackage{ulem}
+\usepackage{pgfplots}
+\pgfplotsset{width=10cm, compat=1.9}
+
+\begin{document}
+
+\textbf{\Huge Vectors}
+
+Athan Zhang \& Jeffrey Chen
+
+\section{Introduction to Vectors}
+
+Previously, we have learned about quantities that can be represented by a single number. However, some concepts in real life must be represented by not only a number, but a direction as well. Some simple examples of these concepts are displacement, velocity, and acceleration. Such quantities have both a \textbf{magnitude} and \textbf{direction}, and are called \textbf{vectors}. 
+
+A vector starts at an initial point, or the tail, and ends at a terminal point, or the head. The magnitude of a vector measures the length of the vector, and the direction measures the way in which it is pointing. 
+
+The traditional method to measure a vector's direction is similar to what students did with the unit circle in the previous trigonometry unit (measuring the angle counterclockwise from the positive $x$-axis). When a vector's direction is measured in this method, it is known as the \textbf{argument} of the vector.
+
+The magnitude of vector \(\Vec{A}\), can be written as $|\Vec{A}|$ or simply $A$.
+
+\section{Simple Vector Operations}
+
+Similar to scalars, there are many operations that we can perform on vectors.
+
+\subsection{Vector Addition}
+Vectors can be added to other vectors. Vector addition is the process of combining two vectors to obtain a new vector that represents their \textbf{resultant}. This operation can be visualized by placing one of the vectors' tail on the head of the other vector. The vector stretching from the first vector's tail to the second vector's head is the resultant vector. 
+
+For example, to add vectors \(\Vec{A}\) and \(\Vec{B}\), we place the tail of \(\Vec{B}\) at the head of \(\Vec{A}\) and draw a vector from the tail of \(\Vec{A}\) to the head of \(\Vec{B}\). The resulting vector, denoted as \(\Vec{C}\), represents the sum of \(\Vec{A}\) and \(\Vec{B}\). 
+
+When two \textbf{opposite vectors}, or two vectors with identical magnitudes but opposite directions, are added, the resultant vector is called the \textbf{zero vector} or the \textbf{null vector}. The zero vector has a magnitude of $0$ and no specified direction, but is still a vector.
+
+\subsection{Vector Subtraction}
+Vector subtraction is a similar operation to vector addition, but it involves subtracting one vector from another. To subtract vector \(\Vec{B}\) from vector \(\Vec{A}\), we reverse the direction of \(\Vec{B}\) while keeping its magnitude constant and add it to \(\Vec{A}\). 
+
+\subsection{Scalar Multiplication}
+Scalar multiplication involves scaling a vector by a scalar quantity. When a vector \(\Vec{A}\) is multiplied by a scalar \(k\), the resulting vector \(\Vec{B}\) has the same direction as \(\Vec{A}\) but its magnitude is scaled by \(k\). Scalar multiplication is useful for stretching or shrinking vectors. 
+
+
+\section{Vector Components}
+
+Vectors \(\Vec{A}\) and \(\Vec{B}\) are called \textbf{components} of \(\Vec{C}\) if they add to \(\Vec{C}\). Components that are parallel to the $x$ and $y$ axes are called \textbf{rectangular components}. The diagram below shows the rectangular components of \(\Vec{A}\), written as \(\Vec{A_x}\) and \(\Vec{A_y}\).
+
+\begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    width=6cm, height=6cm,
+    xmin=0, xmax=2,
+    ymin=0, ymax=2,
+    axis lines=center,
+    ticks=none,
+    ]
+    % Vector A
+    \draw[->, thick, color=red] (0, 0) -- (150, 120) node[right]{$\Vec{A}$};
+    
+    % Dotted lines for x and y components
+    \draw[dotted] (150, 0) -- (150, 120);
+    \draw[dotted] (0, 120) -- (150, 120);
+    
+    % Labels for x and y components
+    \node at (170, 60) {$\Vec{A_x}$};
+    \node at (60, 120) {$\Vec{A_y}$};
+
+    
+    % Angle
+    \coordinate (O) at (0,0);
+    \coordinate (A) at (150,120);
+    \coordinate (Ax) at (150,0);
+    \pic [draw, angle radius=0.5cm, "$\theta$", angle eccentricity=1.5] {angle = Ax--O--A};
+ 
+  \end{axis}
+\end{tikzpicture}
+\end{center}
+
+The magnitudes of the $x$ and $y$ components of vector \(\Vec{A}\) can be calculated by the following, assuming $\theta$ is the angle measure of the vector's direction counterclockwise from the positive $x$-axis:
+\begin{align*}
+    A_{x} &= A\cos{\theta} \\
+    A_{y} &= A\sin{\theta} 
+\end{align*}
+
+\subsection{Utilization of Rectangular Components}
+
+If we know the magnitudes of $\Vec{A_{x}}$ and $\Vec{A_{y}}$ but not the direction of \(\Vec{A}\), we can find the angle $\theta$ from
+\begin{align*}
+    \tan{\theta} = \frac{A_y}{A_x},\hspace{1cm}\theta = \tan^{-1}\frac{A_y}{A_x}    
+\end{align*}
+
+Additionally, we can calculate the magnitude of $\Vec{A}$ using the Pythagorean Theorem:
+\begin{align*}
+    A = \sqrt{A_{x}^{2} + A_{y}^{2}}
+\end{align*}
+
+We can also draw a vector on a coordinate plate with the tail on the origin. This way, we can represent any vector of interest using the coordinates of the head, which are equal to the magnitudes of the rectangular components of the vector. For example, 
+\begin{align*}
+    \Vec{A} = \langle A_x, A_y\rangle 
+\end{align*}
+This notation is known as the \textbf{component form} of a vector.
+
+\section{The Dot Product}
+
+The \textbf{dot product} of two vectors is another vector operation. It is performed by calculating the sum of the products of the matching components between two vectors. For example, if $\Vec{A} = \langle A_x, A_y\rangle$ and $\Vec{B} = \langle B_x, B_y\rangle$, then 
+\begin{align*}
+    \Vec{A} \cdot \Vec{B} = A_xB_x + A_yB_y 
+\end{align*}
+
+Notice that the result of a dot product between vectors is a scalar, not a vector. If two vectors have a dot product of $0$, then they are \textbf{perpendicular} or \textbf{orthogonal} to each other. For the purposes of pre-calculus, these two terms can be thought of as having the same meaning. 
+
+The dot product is one of the fundamental quantities that describe the relationship between two vectors, and can be used to find several other important qualities of vectors, some of which will be detailed below.
+
+\subsection{Vector Projection}
+Previously, we have learned how to deconstruct a vector into components parallel to the $x$ and $y$ axes. However, it is sometimes important for one component to be instead parallel to another vector. 
+
+If \(\Vec{A}\) and \(\Vec{B}\) are nonzero vectors, the component \(\Vec{A_1}\) of \(\Vec{A}\) parallel to \(\Vec{B}\), also known as the \textbf{projection} of \(\Vec{A}\) onto \(\Vec{B}\), can be found with the following formula:
+\begin{align*}
+    \Vec{A_1} = \frac{\Vec{A} \cdot \Vec{B}}{|\Vec{B}|^2} \Vec{B} 
+\end{align*}
+
+\subsection{Angle Between Vectors}
+The angle $\theta$ between vectors \(\Vec{A}\) and \(\Vec{B}\) when they are drawn with their tails on the same point can be found with the following formula:
+\begin{align*}
+    \cos\theta = \frac{\Vec{A} \cdot \Vec{B}}{|\Vec{A}| |\Vec{B}|}
+\end{align*}
+
+\section{Vectors in Space}
+
+\subsection{Higher Dimensions}
+Using a three-dimensional axis system, we can represent points in space with vectors. Vectors in three dimensions can be represented with component form, similar to two-dimensional vectors: 
+\begin{align*}
+    \Vec{A} = \langle A_x, A_y, A_z\rangle 
+\end{align*}
+In fact, there is no limit on the number of dimensions that can be described using vectors. An $n$-dimensional space would involve vectors with $n$  components. Vector operations work the same way in higher dimensions.
+
+\subsection{The Cross Product}
+The \textbf{cross product} is another important product involving two vectors in space. The cross product of two vectors results in a third vector, unlike the dot product. If $\Vec{A} = \langle A_x, A_y, A_z\rangle$ and $\Vec{B} = \langle B_x, B_y, B_z\rangle$, then their cross product is found as follows:
+\begin{align*}
+    \Vec{A} \times \Vec{B} = \langle A_yB_z - A_zB_y, A_zB_x - A_xB_z, A_xB_y - A_yB_x \rangle
+\end{align*}
+The resulting vector from a cross product between two vectors is always perpendicular to the plane containing the two original vectors. For example, the cross product between one vector parallel to the $x$-axis and another vector parallel to the $y$-axis would be parallel to the $z$-axis.
+
+
+\end{document}

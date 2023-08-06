@@ -1,0 +1,140 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{parskip}
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usepackage{subcaption}
+\pgfplotsset{width=10cm, compat=1.9}
+
+\begin{document}
+
+\textbf{\Huge Differential Equations}
+
+Athan Zhang \& Jeffrey Chen
+
+% intro
+    % what is a diff eq?
+    % types
+        % linear
+        % nonlinear
+        % orders
+        % bc will focus on linear first order equations
+% solutions of diff eqs and ivps
+    % general solution vs particular solution
+
+% methods and cases of linear first order equations
+% separable equations
+% need lots of examples for these
+
+% exponential growth
+% logistic growth
+
+% numerical approximation and euler's method
+
+\section{Introduction}
+
+\subsection{Definition}
+
+A \textbf{differential equation} is an equation involving the derivative(s) of some unknown function. For example:
+
+\[ \frac{dy}{dx} = x \]
+
+As can be seen above, we are able to distinguish an \textbf{independent variable} and a \textbf{dependent variable} in ordinary differential equations, those being $y$ and $x$ respectively in the example above. The dependent variable may vary depending on the problem, and is often $t$ for time elapsed in applied problems.
+
+There are many types of differential equations. They can be categorized according to their structure, order, and number of dependent variables. In calculus, we will be focusing on \textbf{ordinary first-order} equations. In higher courses, students may explore many more types of differential equations.
+
+Differential equations are extensively used in both pure mathematics and related fields such as physics and engineering to model situations. 
+
+\subsection{Solutions of Differential Equations}
+A \textbf{solution} of a differential equation is a function $y = y(x)$ that satisfies the equation for all values of $x$. For example, $y=\frac{1}{2}x^2$ is a solution of the earlier example:
+
+\[ \frac{d}{dx}(\frac{1}{2}x^2) &= x \to x = x \]
+
+However, students may notice that this is not the only solution of the equation. In fact, any function of the form $y=\frac{1}{2}x^2 + C$ is a solution, for all constants $C$. Thus, we can observe that differential equations often have a \textbf{family} of solutions, each individual solution varying by some constant multiple of a function. In this simple case, that function is $f(x)=1$. In other more complex cases, this may not be the case. $y=\frac{1}{2}x^2$ is known as a \textbf{particular solution} of the equation, while $y=\frac{1}{2}x^2 + C$ is known as the \textbf{general solution}.
+
+\subsection{Initial Value Problems}
+
+It is, however, possible to restrict the number of solutions to an equation to only one (or even zero) through the addition of an initial condition. This type of restricted equation is known as an \textbf{initial value problem}. A first-order equation requires one restriction on the value of the function $y$ at some point $x_0$. For example:
+
+\[ \frac{dy}{dx} = x\text{, }y(0) = 3 \]
+
+The restriction of $y(0) = 3$ essentially reduces our family of solutions to only the solution that passes through the point $(0, 3)$. Therefore, our only solution is now $y=\frac{1}{2}x^2 + 3$.
+
+\section{Separable Equations}
+There are countless methods of solving differential equations depending on the type of equation and its order. However, in calculus students will only need to know how to solve first-order equations using separation of variables. Equations that can be solved using this method are called \textbf{separable} and are the simplest form of differential equation. These equations can be expressed in the following form:
+
+\[ \frac{dy}{dx} = f(x)g(y) \]
+
+Separation of variables consists of isolating the different variables on different sides:
+
+\[ \frac{1}{g(y)}dy = f(x)dx \]
+
+The equation can then be solved by integrating both sides:
+
+\[ \int \frac{1}{g(y)}dy = \int f(x)dx + C \]
+
+Note the inclusion of a constant of integration on the side of the independent variable. This is necessary to obtain the full family of solutions of the equation. If the problem is an initial value problem, then the exact value of the constant can be evaluated. The integrals will result in some equation describing a relation between $y$ and $x$ without any derivatives. If possible, students should solve for $y$ in terms of $x$ to obtain an explicit solution $y=y(x)$. Otherwise, it is acceptable to leave the relation as-is.
+
+However, there is one case we have not accounted for above. If $y$ is simply a constant that results in $g(y)$ becoming identically zero, then the equation simply becomes:
+
+\[ \frac{dy}{dx} = 0 \]
+
+Obviously, this equation is fulfilled due to our previous assumption that $y$ is constant. Therefore, we must account for this case. We can do so by setting $g(y)$ equal to zero and solving for $y$. These constant solutions are known as \textbf{equilibrium solutions} and while they are not guaranteed to exist, they must always be checked and accounted for. 
+
+\section{Exponential Model}
+Differential equations are commonly used to model exponential growth or decay. The key characteristic of an exponential model is when a quantity's rate of change is proportional to the quantity itself. In other words, when the model can be described by the following differential equation:
+
+\[ \frac{dy}{dt} = ky \]
+
+This equation is separable, so it may be solved using separation of variables. Note that there is an equilibrium solution of $y=0$, but it usually does not make sense in the context of exponential model problems.
+
+\[ \frac{1}{y}dy = kdt \]
+\[ \int \frac{1}{y}dy = \int kdt \]
+\[ \ln{|y|} = kt + C \]
+\[ y = e^{kt+C} = Ce^{kt} \]
+
+Thus, we can see that the previous equation described an exponential function. Below are some examples of real-life instances and applications of exponential models formulated as initial value problems:
+
+\subsection*{Uninhibited Population Growth}
+An example of exponential growth. If the population starts with an initial value of $P_0$, given some constant of proportionality $k$, the rate of growth of the population depends on $k$ and the current population:
+
+\[ \frac{dP}{dt} = kP\text{, }P(0)=P_0 \]
+
+\subsection*{Spread of Disease}
+An example of exponential growth. If there are initially $I_0$ infected people, given some constant of proportionality $k$, the rate of spread of a disease depends on $k$ and the current number of infected people:
+
+\[ \frac{dI}{dt} = kI\text{, }I(0)=I_0 \]
+
+\subsection*{Pharmacology}
+An example of exponential decay. If $D_0$ units of a drug is administered to a patient, given some constant of proportionality $k$, the rate at which the drug disappears from the patient's bloodstream depends on $k$ and the current presence of the drug in the bloodstream.
+
+\[ \frac{dD}{dt} = -kD\text{, }D(0)=D_0 \]
+
+\subsection*{Newton's Law of Cooling}
+An example of exponential decay. If an object of initial temperature $T_0$ is placed in an environment of temperature $T_e$, given some constant of proportionality $k$, the rate of the object's cooling depends on $k$ and the difference between the object's current temperature and the temperature of the environment. If the initial temperature of the object is less than the temperature of environment, this instead becomes an example of exponential growth, and the rate of cooling instead represents the rate of heating.
+
+\[ \frac{dT}{dt} = -k(T-T_e)\text{, }T(0)=T_0\]
+
+Note that the form of this equation is slightly different from the previous ones. However, it is still inherently an exponential model, and can also be solved with separation of variables.
+
+\section{Logistic Model}
+Not all situations, however, are best represented with exponential models. Take population growth as an example. Previously, we assumed an uninhibited growth of population. Realistically, however, populations tend to cap out after a while, and their rate of growth slows down. This is usually due to the limitations of natural resources in the real world, and is represented by a mathematical constant known as the \textbf{carrying capacity}. Thus, a more realistic model of population growth calls for the logistic model.
+
+\subsection*{Inhibited Population Growth}
+An example of logistic growth. If the population starts with an initial value of $P_0$, given some constant of proportionality $k$ and carrying capacity $L$, the rate of growth of the population depends on $k$, $L$, and the current population:
+
+\[ \frac{dP}{dt} = k(1-\frac{P}{L})P\text{, }P(0)=P_0 \]
+
+This equation can also be solved using separation of variables. The process is slightly more complicated, but it results in the following solution:
+
+\[ P = \frac{Ce^{kt}L}{1+Ce^{kt}}\]
+
+When the initial condition is considered, the solution reduces to the following:
+
+\[ P = \frac{L}{1+(\frac{L}{P_0}-1)e^{-kt}}\]
+
+The process of solving the logistic equation is long enough that it justifies the simple memorization of the final solution. However, even this may not be necessary for the purposes of calculus; instead students should seek to understand the contextual purposes and applications of the logistic model. 
+
+\end{document}

@@ -1,0 +1,453 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{parskip}
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usepackage{subcaption}
+\pgfplotsset{width=10cm, compat=1.9}
+
+\begin{document}
+
+\textbf{\Huge Sequences and Series}
+
+Athan Zhang \& Jeffrey Chen
+
+
+\section{Sequences}
+An ordered list of numbers is known as a \textbf{sequence}. The numbers in a sequences are known as its \textbf{terms}. The n-th term of a sequence is the n-th number in order from the start, and n would be known as its \textbf{position}. Sequences can either be finite or infinite. A \textbf{finite sequence} contains a finite number of terms, while an \textbf{infinite sequence} contains an infinite number of terms.
+
+To \textbf{define} a sequence, we must come up with a way to determine any given one of its terms. Luckily, in most cases there exists a pattern that relates the terms.  When we can define a function to find any term of the sequence given its position, we have \textbf{explicitly defined} the sequence. On the other hand, when we are given a few of the first terms of a sequence and define every term past that using the previous terms, we have \textbf{recursively defined} the sequence. In other words:\\
+
+\begin{center}
+Given $s = a_1 + a_2 + a_3 + a_4 \text{\dots} + a_{n-1} + a_n $,
+    \begin{enumerate}
+    \item \textbf{explicit definition}: $a_n = f(n)$
+    \item \textbf{recursive definition:} Given first few terms, $a_n = f(\text{previous terms})$
+\end{enumerate}
+\end{center}
+\vspace{0.5 cm}
+
+Generally, for the purposes of calculus, an explicit definition of a sequence is preferable to a recursive one. In the context of an explicitly defined sequence, we can instead define a sequence as a function $f(n)$, $n$ being the position of an arbitrary term. This function is also referred to as the \textbf{general term}. The domain of $f(n)$ is a set of integers.
+
+% examples on page 597
+
+Now that we have established a relationship between sequences and functions, we can consider investigating and analyzing the behavior of sequences similar to how we analyzed functions in the past. Our primary interest right now is the \textbf{limit} of a sequence. The only limit that makes sense to investigate for a sequence $f(n)$ is $\lim_{n\to \infty}f(n)$. 
+
+In order to investigate this limit, we must first become comfortable with the concept of graphing sequences. Due to their function-like nature and integer domain, we can graph sequences as a set of equally spaced points on a plane. Now, we can more or less generalize the end behavior of a sequence to four different possibilities: \\
+
+\begin{center}
+    \begin{enumerate}
+    \item divergent boundless
+    \item convergent bounded
+    \item divergent oscillation
+    \item convergent oscillation
+\end{enumerate}
+\end{center}
+\vspace{0.5 cm}
+
+% page 599 examples
+
+We can conclude that it is possible for the terms of a sequence to converge to a finite limit, either by simply approaching the limit or by oscillating above and below it. Therefore, we must rigorously define the convergence of a sequence while accounting for both of these cases. 
+
+Let us assume sequence $\{a_n\}$ converges to the finite limit $L$. Then, for any positive number $\epsilon$, at some point in the sequence, all following terms will lie between the horizontal lines $y=L-\epsilon$ and $y=L+\epsilon$. Thus, we have the definition:\\
+
+\begin{center}
+A sequence $\{a_n\}$ is said to \textbf{converge} to the limit $L$ if for any number $\epsilon>0$, there exists an integer $N$ such that $|a_n-L|<\epsilon$ for all $n\geq N$. A sequence that does not converge to any finite limit is said to \textbf{diverge}.
+\end{center}
+\vspace{0.5 cm}
+
+Now that we understand when a sequence converges, we would like to be able to determine its limit when it exists. \\
+
+\begin{center}
+Let $\{a_n\}=f(n)$ be our sequence of interest, and let $f(x)$ be defined for all real numbers from $[1, \infty)$. If $\lim_{x\to \infty}f(x)=L$, then $\lim_{n\to \infty}f(n)=L$. 
+\end{center}
+\vspace{0.5 cm}
+
+% try some problems on page 601
+
+With the ability to determine a sequence's limit now, we should be interested in the properties of these limits. The relevant ones are listed below. Suppose that sequence $\{a_n\}$ converges to $L_1$, and sequence $\{b_n\}$ converges to $L_2$, and $c$ is a constant. Then:\\
+
+\begin{center}
+    \begin{enumerate}
+    \item $\lim_{n \to \infty} c\{a_n\} = cL_1$
+    \item $\lim_{n \to \infty} (\{a_n\} +\{b_n\}) = L_1+L_2$
+    \item $\lim_{n \to \infty} (\{a_n\} -\{b_n\}) = L_1-L_2$
+    \item $\lim_{n \to \infty} \{a_n\}\{b_n\} = L_1L_2$
+    \item $\lim_{n \to \infty} \frac{\{a_n\}}{\{b_n\}} = \frac{L_1}{L_2}$
+\end{enumerate}
+\end{center}
+\vspace{0.5 cm}
+
+Another useful property when evaluating limits of sequences with alternating positive and negative terms is:\\
+
+\begin{center}
+If $\lim_{n \to \infty} |\{a_n\}|=0$, then $\lim_{n \to \infty} \{a_n\}=0$.
+\end{center}
+\vspace{0.5 cm}
+
+% try problem on page 604
+% talk briefly about recursive limit technique on page 605 and come up with an example
+
+
+\section{Series}
+
+A \textbf{series} refers to the sum of a sequence. A \textbf{finite series} refers to the sum of a finite sequence, and an \textbf{infinite series} refers to the sum of an infinite sequence. The sum of the first $n$ terms of a sequence is known as the \textbf{n-th partial sum}. 
+
+Series can be expressed using \textbf{sigma notation}. The capital letter $\Sigma$ represents summation. Given a sequence with $k$ terms, the corresponding series can be represented by the following:
+
+\[ \sum_{n=1}^{k} a_n = a_1 + a_2 + a_3 + \text{\dots} + a_{k-1} + a_k \]
+
+In the case of an infinite series, the sequence has infinite terms, so the series is written as: 
+
+\[ \sum_{n=1}^{\infty} a_n = a_1 + a_2 + a_3 + \text{\dots} \]
+
+Due to the fact that infinite series represent infinite sums, they are not guaranteed to converge to a finite number. However, it is actually possible in many cases for an infinite series to converge. One of the most obvious conditions is that the relevant infinite sequence converges to a limit of $0$. However, there are many other conditions and tests for convergence, which will be officially explored later. 
+
+First, we must rigorously define the convergence of an infinite series. We can notice that increasing partial sums can be considered approximations of the exact value of the sum of an infinite series. Therefore, we can define construct the following definition:\\
+
+\begin{center}
+Let $\{s_n\}$ represent the sequence of $n$-th partial sums of the infinite series $S$. If $\{s_n\}$ converges to a limit $L$, then $S$ is said to \textbf{converge} to $L$, and $L$ is said to be the \textbf{sum} of $S$. If the sequence $\{s_n\}$ diverges, then the series $S$ is said to \textbf{diverge}.
+\end{center}
+\vspace{0.5 cm}
+
+% page 616 problem
+
+\subsection{Geometric Series}
+Students may recall that a sequence whose successive terms differ by a constant multiple is called a \textbf{geometric sequence}. The constant is known as the \textbf{common ratio}. Assuming the first Assuming the first term starts at $a_1$, generally, all geometric sequences can be recursively defined as:
+
+\[ a_n = ra_{n-1}\text{, }a_1 = k\]
+
+They can also be explicitly defined as:
+
+\[ a_n = r^{n-1}a_1\text{, }a_1 = k \]
+
+A \textbf{geometric series} is the sum of of the terms of a geometric sequence. Using another trick, we can derive a formula for the sum of a finite arithmetic series. Given there are $n$ terms in the series, and $a_1$ is the first term of the series, the sum is equivalent to the following:
+% derive page 611-612 precalc book
+\[ S_n = a_1 \frac{1-r^n}{1-r}\]
+
+Unlike arithmetic series, it is possible for an infinite geometric series to converge. This happens when the absolute value of the common ratio is less than $1$. In other words: \\
+
+\begin{center}
+An infinite geometric series converges if $|r| < 1$ and diverges if $|r| \geq 1$.
+\end{center}
+\vspace{0.5 cm}
+
+We can derive a formula for the sum of an infinite geometric series by taking the limit of the formula for the sum of a finite geometric series as $n$ goes to infinity, keeping in mind that $|r| < 1$.
+
+\[ S = \lim_{n \to \infty} a_1 \frac{1-r^n}{1-r} = a_1 \frac{1}{1-r}\]
+\[ S = \frac{a_1}{1-r} \]
+
+% practice some infinite geometric series, whether or not converge, 
+% page 618
+
+\subsection{Harmonic Series}
+The \textbf{harmonic series} is another basic yet common series students will encounter. It is defined as the following:
+
+\[ \sum_{n=1}^{\infty} \frac{1}{n} = 1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \text{\dots}\]
+
+This series occurs often in nature and music, and is an example of a divergent series. We can prove its divergence by observing the unbounded nature of its sequence of partial sums. It may be helpful to memorize the harmonic series' property of divergence.
+
+\section{Convergence Tests}
+There are many different tests for the convergence and divergence of infinite series. The most useful ones will be introduced in this section.
+
+\subsection{Divergence Test}
+Starting off, as stated before, a necessary but not sufficient condition for convergence is the convergence of the related sequence to $0$. In other words:\\
+
+\begin{center}
+\begin{enumerate}
+    \item If $\{a_n\}$ does not converge to $0$, then $\sum a_n$ diverges.
+    \item If $\{a_n\}$ converges to $0$, then $\sum a_n$ either converges or diverges.
+\end{enumerate}
+\end{center}
+\vspace{0.5 cm}
+
+% example on 624
+
+\subsection{P-Series Test}
+A series is called a \textbf{p-series} if it can be written in the form:
+
+\[ \sum_{n=1}^{\infty} \frac{1}{n^p} = 1 + \frac{1}{2^p} + \frac{1}{3^p} + \frac{1}{4^p} + \text{\dots}\]
+
+The following test tells when a p-series converges or diverges.\\
+
+\begin{center}
+\begin{enumerate}
+    \item If $p>1$, then $\sum_{n=1}^{\infty} \frac{1}{n^p}$ converges.
+    \item If $0<p\leq 1$, then $\sum_{n=1}^{\infty} \frac{1}{n^p}$ diverges.
+\end{enumerate}
+\end{center}
+\vspace{0.5 cm}
+
+\subsection{Comparison Test}
+Let $\sum_{n=1}^{\infty} a_n$ and $\sum_{n=1}^{\infty} b_n$ be series with nonnegative terms. Suppose that  
+\[ a_1\leq b_1\text{, } a_2\leq b_2\text{, } a_3\leq b_3\text{, } a_4\leq b_4\text{\dots} \]
+Then, the following is true: \\
+
+\begin{center}
+\begin{enumerate}
+    \item If the "bigger" series $\sum_{n=1}^{\infty} b_n$ converges, so does the "smaller" series $\sum_{n=1}^{\infty} a_n$.
+    \item If the "smaller" series $\sum_{n=1}^{\infty} a_n$ diverges, so does the "bigger" series $\sum_{n=1}^{\infty} b_n$.
+\end{enumerate}
+\end{center}
+\vspace{0.5 cm}
+
+% example on page 632
+
+\subsection{Limit Comparison Test}
+Let $\sum a_n$ and $\sum b_n$ be series with positive terms. Suppose that
+\[ \rho = \lim_{n \to \infty} \frac{a_n}{b_n } \]
+If $\rho$ is positive and finite, then either $\sum a_n$ and $\sum b_n$ both converge or both diverge. 
+
+% example on page 633
+
+\subsection{Ratio Test}
+Let $\sum a_n$ be a series with positive terms. Suppose that
+\[ \rho = \lim_{n \to \infty} \frac{a_n+1}{a_n}\]
+Then the following is true:\\
+
+\begin{center}
+\begin{enumerate}
+    \item If $\rho<1$, the series converges.
+    \item If $\rho>1$, the series diverges.
+    \item If $\rho=1$, the series either converges or diverges.
+\end{enumerate}
+\end{center}
+\vspace{0.5 cm}
+
+% example on page 634
+
+\subsection{Root Test}
+Let $\sum a_n$ be a series with positive terms. Suppose that
+\[ \rho = \lim_{n \to \infty} \sqrt[n]{a_n}\]
+Then the following is true:\\
+
+\begin{center}
+\begin{enumerate}
+    \item If $\rho<1$, the series converges.
+    \item If $\rho>1$, the series diverges.
+    \item If $\rho=1$, the series either converges or diverges.
+\end{enumerate}
+\end{center}
+\vspace{0.5 cm}
+
+% example on page 635
+
+\subsection{Alternating Series Test}
+An \textbf{alternating series} is defined as a series whose terms alternate between positive and negative. The following test can be used to easily determine the convergence of an alternating series:\\
+
+\begin{center}
+An alternating series converges if both of these conditions are satisfied:
+\begin{enumerate}
+    \item $|a_1|\geq|a_2|\geq|a_3|\geq|a_4|\text{\dots}$
+    \item $\lim_{n \to \infty}|a_n|=0$
+\end{enumerate}
+\end{center}
+\vspace{0.5 cm}
+
+% example on page 639
+
+\subsection{Ratio Test for Absolute Convergence}
+Here, we must define a few terms to describe some cases we have not examined yet. A series $\sum a_n$ is said to \textbf{converge absolutely} if the series $\sum |a_n|$ converges. It is said to \textbf{diverge absolutely} if the series of absolute values diverges. Finally, it is said to \textbf{converge conditionally} if it is convergent but not absolutely convergent. With this understanding, a helpful theorem is as follows:\\
+
+\begin{center}
+If a series is absolutely convergent, it is also convergent.
+\end{center}
+\vspace{0.5 cm}
+
+% example on page 641
+
+Thus, we can examine the convergence of a series by examining whether or not it is absolutely convergent. We can also use these definitions in our final convergence test:
+
+\begin{center}
+Let $\sum a_n$ be a series with nonzero terms. Suppose that
+\[ \rho = \lim_{n \to \infty} \frac{|a_n+1|}{|a_n|}\]
+Then the following is true:\\
+
+\begin{center}
+\begin{enumerate}
+    \item If $\rho<1$, the series converges absolutely and thus converges.
+    \item If $\rho>1$, the series diverges.
+    \item If $\rho=1$, the series either converges or diverges.
+\end{enumerate}
+\end{center}
+\vspace{0.5 cm}
+\end{center}
+
+% example on page 644
+
+\subsection{Conclusion}
+There are a great many number of convergence tests, and the process of choosing which test to apply, as well as its application, takes time, practice, and intuition to master. Students should keep in mind that in many cases, multiple tests work, and if a certain test is inconclusive, they should try using a different test.
+
+\section{Power Series}
+A \textbf{power series} is a type of infinite series. Unlike the previous series of constants we have studied, a power series involves powers of variables (hence the name), and can be represented by the form:
+
+\[\sum_{n=0}^{\infty} c_n(x-x_0)^n = c_0 + c_1(x-x_0) + c_2(x-x_0)^2 + c_3(x-x_0)^3 \text{\dots}\]
+
+This is referred to as a power series \textbf{centered} at $x_0$. In some cases, a power series may be centered at $0$, reducing the above to the following:
+
+\[\sum_{n=0}^{\infty} c_nx^n = c_0 + c_1x + c_2x^2 + c_3x^3 \text{\dots}\]
+
+Students should also note that some of the coefficients $c_n$ may be $0$, so the powers of consecutive terms do not have to be consecutive. 
+
+
+% START HERE TODAY
+
+
+\subsection{Convergence of Power Series}
+Similar to the previous series we have studied, we would like to investigate the conditions and situation surrounding the convergence of a power series. Typically, a power series' convergence depends on the number substituted in for $x$. Therefore, solving the convergence of a power series boils down to the task of determining the set of numbers which, when substituted in for $x$, allow the the series to converge.
+
+Let us start with the simple. Obviously, substituting $x_0$ for $x$ allows a power series centered at $x_0$ to converge, as it reduces all terms to $0$. However, anything past that requires some more work to investigate. Generally, the convergence set of a power series centered at $x_0$ is either a finite or infinite interval containing $x_0$. It is possible in some cases for $x_0$ to be the only point of convergence of the series. The possible cases of convergence are detailed in the theorem below:\\
+
+\begin{center}
+For any power series centered at $x_0$, exactly one of the following statements is true:
+\begin{enumerate}
+    \item The series converges only at $x=x_0$.
+    \item The series converges absolutely for all real values of $x$.
+    \item The series converges absolutely for all real values of $x$ in some interval $(x_0-R, x_0+R)$ and diverges for all $x<x_0-R$ and $x>x_0+R$. At $x=x_0-R$ and $x=x_0+R$, the series may converge absolutely, converge conditionally, or diverge. 
+\end{enumerate}
+\end{center}
+\vspace{0.5 cm}
+
+Due to the set of convergence being an interval of numbers centered around $x_0$, we can call it an \textbf{interval of convergence} defined by two key characteristics. The first is the center $x_0$, as mentioned before, and the second is the \textbf{radius of convergence} $R$, or the length from the center to each boundary of the interval. In the case of when our interval of convergence is simply $x_0$, we say that the radius of convergence is $0$. When our interval is $(-\infty, \infty)$, we say that the radius is $\infty$.
+
+The most common method for determining a power series' interval of convergence is using the ratio test for absolute convergence introduced in the previous section. When applying this test to a power series, students will typically obtain the absolute value of an expression in terms of $x$ as their ratio. Determine exactly which values of $x$ make this absolute value less than $1$ (as per the convergence test) to calculate the interval of convergence.
+
+% page 662 examples
+
+\subsection{Functional Applications of Power Series}
+Power series have countless applications in mathematics and physics. Their importance cannot be understated. Their main use is to define (or in some cases, approximate) functions. If a function $f(x)$ can be instead written as a converging power series on some interval of $x$, we say that the power series \textbf{converges to} or \textbf{represents} $f(x)$. For an example, recall that the sum of an infinite geometric series is given by 
+
+\[\frac{a_1}{1-r} = a_1 + ra_1 + r^2a_1 + r^3a_1 + \text{\dots}\]
+
+(Obviously, under the assumption that $|r|<1$.) If we were to instead replace the common ratio with $x$, and set the initial term as $1$, we have:
+
+\[\frac{1}{1-x} = 1 + x + x^2 + x^3 + \text{\dots}\]
+
+We can see that this is a simple power series. Thus, on the interval $|x|<1$, the power series $\sum_{n=0}^{\infty}x^n$ converges to and represents the function $\frac{1}{1-x}$. More explanation and investigation into the concept of representing functions as power series will come later on after the introduction of Taylor and Maclaurin series. Some functions are actually \textbf{defined} as power series, such as $J_0(x)$ and $J_1(x)$, the Bessel Functions. 
+
+\section{Taylor and Maclaurin Polynomials}
+Students may recall learning about local linear approximation earlier in the course, a method of approximating a function near a neighborhood of a tangent point using a tangent line. Remember that if a function curves, a linear approximation becomes less and less accurate as we move away from the tangent point. We can actually fix this problem by increasing the order of our approximation to $2$, thus creating a curve in our approximation as well. We will show what happens when we do this below.
+
+Recall that the formula for a local linear approximation was:
+
+\[f(x) \approx f(x_0)+f'(x_0)(x-x_0)\]
+
+We can simply alter this approximation by adding a term of order $2$. Thus, we would have a polynomial of the form:
+
+\[P(x) = c_0+c_1(x-x_0)+c_2(x-x_0)^2\]
+
+We know that our approximation's derivatives must match that of the function. Therefore:
+
+\[P(x_0)=f(x_0)\text{, }P'(x_0)=f'(x_0)\text{, }P''(x_0)=f''(x_0)\]
+
+Let us take the derivatives of $P(x)$ to see what they are.
+
+\[P(x_0)=c_0\text{, }P'(x_0)=c_1\text{, }P''(x_0)=2c_2\]
+
+Thus, we have:
+
+\[c_0=f(x_0)\text{, }c_1=f'(x_0)\text{, }c_2=\frac{f''(x_0)}{2}\]
+
+Therefore, our so-called local quadratic approximation of $f(x)$ at $x_0$ is:
+
+\[f(x) \approx f(x_0)+f'(x_0)(x-x_0)+\frac{f''(x_0)}{2}(x-x_0)^2\]
+
+This gives us a much closer approximation of $f(x)$ than a simple tangent line. It turns out, the higher the order of the polynomial approximation, the higher the accuracy. Therefore, we can continually increase the order to whatever we like, so long as we can compute the derivative of that order. 
+
+By using the same method as above, we can determine the coefficients of the order $3$ term, and order $4$ term, and etc. Thus, given function $f(x)$ is $n$-times differentiable, we can approximate it as a polynomial of order $n$. This polynomial approximation of a function is called a \textbf{Taylor polynomial}. For example, a Taylor polynomial of degree $3$ of the function $f(x)$ is given as:
+
+\[f(x) \approx f(x_0)+f'(x_0)(x-x_0)+\frac{f''(x_0)}{2}(x-x_0)^2+\frac{f'''(x_0)}{6}(x-x_0)^3\]
+
+The derivation for this polynomial will be omitted, but remember that the method shown before works to find the coefficients of any order polynomial approximation. We can generalize the coefficients into an explicit formula, and thus we can define the Taylor polynomial as such:\\
+
+\begin{center}
+If $f(x)$ can be differentiated $n$ times at point $x_0$, the $n$-th degree Taylor polynomial approximation of $f(x)$ centered at $x_0$ is given by:
+\[P_n(x) = f(x_0)+f'(x_0)(x-x_0)+\frac{f''(x_0)}{2!}(x-x_0)^2+\frac{f'''(x_0)}{3!}(x-x_0)^3+ \text{\dots}\]
+\end{center}
+\vspace{0.5 cm}
+
+We can write this in sigma notation, giving us:
+
+\[P_n(x) = \sum_{k=0}^n \frac{f^{(k)}(x_0)}{k!}(x-x_0)^k\]
+
+A Taylor polynomial centered around $x=0$ is instead referred to as a \textbf{Maclaurin polynomial}. A Maclaurin polynomial can be written in sigma notation as:
+
+\[P_n(x) = \sum_{k=0}^n \frac{f^{(k)}(0)}{k!}(x)^k\]
+
+Together, Taylor and Maclaurin polynomials are commonly used by mathematicians, physicists, and calculators alike to approximate functions.
+
+% problems starting on page 649, spend some time doing them
+% ask them to find p1, p2, p3, etc. and find the difference between them and the function at nearby points
+% taylor problems start on page 653
+
+We would like to be able to approximate the error of an $n$-th degree Taylor or Maclaurin series' approximation of a function $f(x)$. The following formula is called the \textbf{Lagrange Error Bound}:
+
+\[ |R_n(x)| \leq \frac{M}{(n+1)!}|x-x_0|^{n+1}\]
+
+Here, $x$ represents the point of the function which we are approximating, $x_0$ represents the point of the function around which our polynomial is centered, $n$ represents the degree of our polynomial and $R_n(x)$ represents the remainder, or error, of the approximation. The final variable, $M$, is a bit harder to understand. $M$ represents the maximum value of $|f^{(n+1)}(x)|$ on the interval between $x$ and $x_0$. Determining $M$ is usually the most difficult part of the error bounding process.
+% do some practice w this (page 656)
+% do it step by step with them, don't have them do it alone
+
+\section{Taylor and Maclaurin Series}
+We can now consider the idea of a Maclaurin or Taylor polynomial of infinite order. This would mean our polynomials instead become power series. This is illustrated below:\\
+
+\begin{center}
+    If $f(x)$ is infinitely differentiable at point $x_0$, then the \textbf{Taylor series} of $f(x)$ centered at $x_0$ is given by:
+    \[\sum_{k=0}^{\infty} \frac{f^{(k)}(x_0)}{k!}(x-x_0)^k=f(x_0)+f'(x_0)(x-x_0)+\frac{f''(x_0)}{2!}(x-x_0)^2 +\text{\dots}\]
+    Additionally, if $f(x)$ is infinitely differentiable at point $0$, then the \textbf{Maclaurin series} of $f(x)$ is given by:
+    \[\sum_{k=0}^{\infty} \frac{f^{(k)}(0)}{k!}x^k=f(0)+f'(0)x+\frac{f''(0)}{2!}x^2 +\text{\dots}\]
+\end{center}
+% examples page 660 
+% don't have to spend much time, can take previous examples from polynomials and ask them to find series
+
+Notice that an $n$-th degree Taylor or Maclaurin polynomial is simply the $n$-th partial sum of its corresponding Taylor or Maclaurin series. We are now presented with two primary questions. First: on what intervals do Taylor and Maclaurin series of a function $f(x)$ converge? Second: even if they do converge, can we tell whether they converge to $f(x)$? 
+
+As for the first task, observing that Taylor and Maclaurin series are examples of power series, we can use the methods established before (mainly the ratio test for absolute convergence) to determine the interval and radius of convergence of such series.
+% can take previous examples and ask them to find convergence
+
+For the second task, we must revisit the concept of error approximation with Taylor and Maclaurin polynomials. Recall the Lagrange Error Bound formula:
+
+\[ |R_n(x)| \leq \frac{M}{(n+1)!}|x-x_0|^{n+1}\]
+
+Theoretically, if the error bound of a Taylor or Maclaurin polynomial at a point $x$ approaches $0$ as $n$ continually increases, then we can conclude that the Taylor or Maclaurin series at that point converges to the function. In other words:
+
+\[f(x)=\sum_{k=0}^{\infty} \frac{f^{(k)}(x_0)}{k!}(x-x_0)^k \text{ at point $x$ if and only if } \lim_{n \to \infty}|R_n(x)|=0\]
+
+% need to show an example of this, maybe do a practice problem? example on page 669
+% probably won't be asked to do this kind of proof, and even if you are, you'll be a lot more comfortable with all these concepts by then
+% so don't worry about it too much, resources are all here if necessary
+
+\subsection{Common Maclaurin Series}
+Below is a list of some Maclaurin series that are either important, common, or simple enough to perhaps warrant memorization.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|}
+    \hline
+        Function & Maclaurin Series & Interval of Convergence \\
+        \hline
+        &&\\
+        $\frac{1}{1-x}$ & $\sum_{n=0}^{\infty}x^n=1+x+x^2+x^3+\text{\dots}$ & $-1 < x < 1$
+        \\ &&\\
+        $e^x$ & $\sum_{n=0}^{\infty}\frac{x^n}{n!}=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\text{\dots}$ & $-\infty < x < \infty$
+        \\ &&\\
+        $\cos x$ & $\sum_{n=0}^{\infty}(-1)^n\frac{x^{2n}}{(2n)!}=1-\frac{x^2}{2!}+\frac{x^4}{4!}-\frac{x^6}{6!}+\text{\dots}$ & $-\infty < x < \infty$
+        \\ &&\\
+        $\sin x$ & $\sum_{n=0}^{\infty}(-1)^n\frac{x^{2n+1}}{(2n+1)!}=x-\frac{x^3}{3!}+\frac{x^5}{5!}-\frac{x^7}{7!}+\text{\dots}$ & $-\infty < x < \infty$
+        \\&&\\
+        $\arctan x$ & $\sum_{n=0}^{\infty}(-1)^n\frac{x^{2n+1}}{2n+1}=x-\frac{x^3}{3}+\frac{x^5}{5}-\frac{x^7}{7}+\text{\dots}$ & $-1 \leq x \geq 1$
+        \\&&\\
+        $\ln(1+x)$ & $\sum_{n=0}^{\infty}(-1)^{n+1}\frac{x^{n}}{n}=x-\frac{x^2}{2!}+\frac{x^3}{3!}-\frac{x^4}{4!}+\text{\dots}$ & $-1 < x < 1$
+        \\&&\\
+        $\cosh x$ & $\sum_{n=0}^{\infty}\frac{x^{2n}}{(2n)!}=1+\frac{x^2}{2!}+\frac{x^4}{4!}+\frac{x^6}{6!}+\text{\dots}$ & $-\infty < x < \infty$
+        \\&&\\
+        $\sinh x$ & $\sum_{n=0}^{\infty}\frac{x^{2n+1}}{(2n+1)!}=x+\frac{x^3}{3!}+\frac{x^5}{5!}+\frac{x^7}{7!}+\text{\dots}$ & $-\infty < x < \infty$
+        \\&&\\
+    \hline
+    \end{tabular}
+\end{table}
+
+
+\end{document}

@@ -1,0 +1,183 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{parskip}
+\usepackage{amsmath}
+\usepackage{subfigure}
+\usepackage{ulem}
+\usepackage{pgfplots}
+\pgfplotsset{width=10cm, compat=1.9}
+
+\begin{document}
+
+\textbf{\Huge Sequences and Series}
+
+Athan Zhang \& Jeffrey Chen
+
+\section{Introduction}
+
+Sequences and series are a fundamental part of a branch of mathematics called number theory, which deals with patterns within terms. They are also extensively used in calculus and analysis. Despite their high-level applications and usages, the concepts of sequences and series are rather simple.
+
+\subsection{Sequences}
+An ordered list of numbers is known as a \textbf{sequence}. The numbers in a sequences are known as its \textbf{terms}. The n-th term of a sequence is the n-th number in order from the start, and n would be known as its \textbf{position}. Sequences can either be finite or infinite. A \textbf{finite sequence} contains a finite number of terms, while an \textbf{infinite sequence} contains an infinite number of terms.
+
+To \textbf{define} a sequence, we must come up with a way to determine any given one of its terms. Luckily, in most cases there exists a pattern that relates the terms.  When we can define a function to find any term of the sequence given its position, we have \textbf{explicitly defined} the sequence. On the other hand, when we are given a few of the first terms of a sequence and define every term past that using the previous terms, we have \textbf{recursively defined} the sequence. In other words:
+
+Given $s = a_1 + a_2 + a_3 + a_4 \text{\dots} + a_{n-1} + a_n $,
+\begin{center}
+    \begin{enumerate}
+    \item \textbf{explicit definition}: $a_n = f(n)$
+    \item \textbf{recursive definition:} Given first few terms, $a_n = f(\text{previous terms})$
+\end{enumerate}
+\end{center}
+
+Similar to how students previously investigated the end behaviors and limits of functions, it is also possible for the terms of an infinite series to approach a limit. When the limit exists and is a finite number, the sequence is known as \textbf{convergent}. When the limit does not exist or is infinite, the sequence is known as \textbf{divergent}. For example: 
+
+\begin{center}
+    \begin{enumerate}
+        \item Let $a_n = 2n$, with $n = 0, 1, 2, 3$ \dots 
+        \item Let $a_0 = 1$, with $a_n = a_{n-1}+5$, with $n = 1, 2, 3$ \dots 
+        \item Let $a_n = \frac{1}{n+1}$, with $n = 0, 1, 2, 3$ \dots
+        \item Let $a_0 = 8$, with $a_n = -\frac{1}{2}a_{n-1}$, with $n = 1, 2, 3$ \dots
+    \end{enumerate}
+\end{center}
+
+The explicitly defined sequence $1$ and the recursively defined sequence $2$ diverge. On the other hand, the explicitly defined sequence $3$ and the recursively defined sequence $4$ converge.
+
+% practice converting from explicit to recursive definition
+% practice determining limits
+
+\subsection{Series}
+
+A \textbf{series} refers to the sum of a sequence. A \textbf{finite series} refers to the sum of a finite sequence, and an \textbf{infinite series} refers to the sum of an infinite sequence. The sum of the first n terms of a sequence is known as the \textbf{n-th partial sum}. 
+
+Due to the fact that infinite series represent infinite sums, they are not guaranteed to converge to a finite number. However, it is actually possible in many cases for an infinite series to converge. Rather obviously, a necessary but \textbf{not sufficient} condition for the convergence of an infinite series is the convergence of the associated infinite sequence to zero. The full conditions for an infinite series' convergence will not be extensively explored in precalculus, but will be a big topic in calculus. 
+
+Series can be expressed using \textbf{sigma notation}. The capital letter $\Sigma$ represents summation. Given a sequence with $k$ terms, the corresponding series can be represented by the following:
+
+\[ \sum_{n=1}^{k} a_n = a_1 + a_2 + a_3 + \text{\dots} + a_{k-1} + a_k \]
+
+In the case of an infinite series, the sequence has infinite terms, so the series is written as: 
+
+\[ \sum_{n=1}^{\infty} a_n = a_1 + a_2 + a_3 + \text{\dots} \]
+
+\section{Arithmetic Sequences and Series}
+A sequence whose successive terms differ by a constant is called an \textbf{arithmetic sequence}. The constant is known as the \textbf{common difference}. Assuming the first term starts at $a_1$, generally, all arithmetic sequences can be recursively defined as:
+
+\[ a_n = a_{n-1}+d\text{, }a_1 = k\]
+
+They can also be explicitly defined as:
+
+\[ a_n = a_1+(n-1)d\text{, }a_1 = k \]
+
+% talk about difference trees and order of explicit definition
+
+An \textbf{arithmetic series} is the sum of the terms of an arithmetic sequence. Using a simple trick, we can derive a formula for the sum of a finite arithmetic series. Given there are $n$ terms in the series, and $a_1$ and $a_n$ are the first and last terms of the series respectively, the sum is equivalent to the following:
+
+\[ S_n = \frac{n}{2}(a_1+a_n) \]
+
+Note that this formula can also be used to calculate the n-th partial sum of an infinite arithmetic sequence. However, in general, infinite arithmetic series cannot converge to a finite sum.
+
+% problems on 603, 604 (667, 668)
+
+\section{Geometric Sequences and Series}
+A sequence whose successive terms differ by a constant multiple is called a \textbf{geometric sequence}. The constant is known as the \textbf{common ratio}. Assuming the first Assuming the first term starts at $a_1$, generally, all geometric sequences can be recursively defined as:
+
+\[ a_n = ra_{n-1}\text{, }a_1 = k\]
+
+They can also be explicitly defined as:
+
+\[ a_n = r^{n-1}a_1\text{, }a_1 = k \]
+
+A \textbf{geometric series} is the sum of of the terms of a geometric sequence. Using another trick, we can derive a formula for the sum of a finite arithmetic series. Given there are $n$ terms in the series, and $a_1$ is the first term of the series, the sum is equivalent to the following:
+% derive page 611-612
+\[ S_n = a_1 \frac{1-r^n}{1-r}\]
+
+By factoring, we can slightly alter this formula to the following:
+
+\[ S_n = a_1 \frac{a_1-a_nr}{1-r} \]
+
+These two formulas serve the same purpose of calculating a finite geometric series. However, the first one requires the knowledge of the exact value of $n$, while the second one simply requires the final term of the series.
+
+Unlike arithmetic series, it is possible for an infinite geometric series to converge. The condition is for the terms of the series to eventually approach $0$. In other words, an infinite geometric series converges if:
+
+\[ |r| < 1 \]
+
+In this case, the sum of the infinite geometric series is given by:
+
+\[ S = \frac{a_1}{1-r} \]
+
+This formula is derived from the first formula for finite geometric series, by taking the limit as $n$ goes to infinity.
+
+% page 612-615 practice
+
+\section{Binomial Theorem}
+
+\subsection{Pascal's Triangle}
+Students may be familiar with the concept of Pascal's Triangle from previous math courses. It refers to the following array of numbers:
+
+\begin{center}
+$1$\\
+$1\hspace{0.3 cm}1$\\
+$1\hspace{0.3 cm}2\hspace{0.3 cm}1$\\
+$1\hspace{0.3 cm}3\hspace{0.3 cm}3\hspace{0.3 cm}1$\\
+$1\hspace{0.3 cm}4\hspace{0.3 cm}6\hspace{0.3 cm}4\hspace{0.3 cm}1$\\
+\dots
+\end{center}
+
+Each number besides the ones on the edges after the first two rows is generated by summing the numbers above it. The first row consisting of a singular one is actually known as the "zero-th" row, and the first row refers to the row with two ones. Pascal's Triangle has applications in various fields of math, but here we will be focusing on its use in the expansion of binomial powers.
+
+For example, let us take a simple binomial, $x+y$, and investigate its powers. 
+
+\begin{center}
+$(x+y)^0 = \textbf{1}$\\
+$(x+y)^1 = \textbf{1}x+\textbf{1}y$\\
+$(x+y)^2 = \textbf{1}x^2+\textbf{2}xy+1\textbf{1}y^2$\\
+$(x+y)^3 = \textbf{1}x^3+\textbf{3}x^2y+\textbf{3}xy^2+\textbf{1}y^3$
+\end{center}
+
+We can observe several patterns in the expansions above. First, the coefficients of the terms follow the rows of Pascal's Triangle. Specifically, a binomial raised to the $n$-th power will follow the $n$-th row of Pascal's Triangle. Second, the powers of $x$ and $y$ are decreasing from $n$ to $0$ and increasing from $0$ to $n$, respectively. These patterns hold true for all powers of binomials. Below is a more complicated example:
+\[(3x+2y)^4\]
+$n=4$, so we take the fourth row of Pascal's Triangle: $1\hspace{0.3 cm}4\hspace{0.3 cm}6\hspace{0.3 cm}4\hspace{0.3 cm}1$. The remaining parts of each term will be comprised of decreasing and increasing powers of $3x$ and $2y$, ranging from $4$ to $0$.
+\begin{align*}
+    (3x+2y)^4&=(1)(3x)^4(2y)^0+(4)(3x)^3(2y)^1+(6)(3x)^2(2y)^2+(4)(3x)^1(2y)^3+\\&\hspace{0.5 cm}(1)(3x)^0(2y)^4\\
+    &=81x^4+108x^3y+216x^2y^2+96xy^3+16y^4
+\end{align*}
+Thus, we have devised a method using Pascal's Triangle to determine the expansion of any binomial power. However, while this method works, the recursive method of obtaining coefficients using Pascal's Triangle is more of a hassle than we would like. In the following sections, we will introduce an explicit formula for the coefficients and resulting expansions. Before that can be done, however, some review of older concepts is in order.
+
+% make up practice problem
+
+\subsection{Combinations}
+First, it is necessary to review the concept of combinations. $n \choose x$, read as "$n$ choose $x$" and also sometimes written as $_nC_x$, refers to the combinations formula. Combinations are used in combinatorics and probability to determine the number of ways $x$ different objects can be chosen from a pool of $n$ total objects disregarding order. For example, the number of outcomes possible when pulling $2$ balls out of a bag of $4$ distinct balls is given by $4 \choose 2$.
+
+The formula is as follows:
+\[ {n \choose x} = \frac{n!}{x!(n-x)!} \]
+$n!$ represents the factorial function, the product of all consecutive integers from $n$ to $1$. One tip when computing combinations is that $n$ is greater than $x$, so $x!$ is fully contained within $n!$, and can thus be cancelled out, leaving the numerator as the product of all consecutive integers from $n$ to $n-x+1$.
+
+% practice combinations 
+
+\subsection{Binomial Theorem}
+Combinations can actually be used to express the numbers in Pascal's Triangle. This is the first step of our process to derive an explicit formula for binomial expansions. The $n$-th row of the triangle can be represented by the list of numbers $n \choose x$, where $x$ increases from $0$ to $n$, as follows:
+
+\begin{center}
+${0 \choose 0}$\\
+${1 \choose 0}\hspace{0.3 cm}{1 \choose 1}$\\
+${2 \choose 0}\hspace{0.3 cm}{2 \choose 1}\hspace{0.3 cm}{2 \choose 2}$\\
+${3 \choose 0}\hspace{0.3 cm}{3 \choose 1}\hspace{0.3 cm}{3 \choose 2}\hspace{0.3 cm}{3 \choose 3}$\\
+${4 \choose 0}\hspace{0.3 cm}{4 \choose 1}\hspace{0.3 cm}{4 \choose 2}\hspace{0.3 cm}{4 \choose 3}\hspace{0.3 cm}{4 \choose 4}$\\
+\end{center}
+
+Thus, we now know how to explicitly find the coefficients of a binomial expansion, instead of relying on recursive methods. Our final step is to explicitly express the increasing and decreasing powers of the two terms in the binomial. Once this is done, we have the following \textbf{Binomial Theorem}:
+
+\vspace{0.2 cm}
+For any positive integer $n$, the expansion of $(x+y)^n$ is as follows:
+\[(x+y)^n={n \choose 0}x^ny^0 + {n \choose 1}x^{n-1}y^1 + \text{\dots} + {n \choose n-1}x^1y^{n-1} + {n \choose n}x^0y^n\]
+
+The Binomial Theorem gives us an explicit formula to expand any power of a binomial using combinations and exponents. With our knowledge of sigma notation, we can express the theorem as a sum:
+
+\[(x+y)^n=\sum_{r=0}^n {n \choose r}x^{n-r}y^r\]
+
+The ability to expand binomials is invaluable to higher levels of math and applications in which generating functions can help model outcomes and probabilities.
+
+\end{document}

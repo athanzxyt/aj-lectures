@@ -1,0 +1,412 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{parskip}
+\usepackage{amsmath}
+\usepackage{subfigure}
+\usepackage{ulem}
+\usepackage{pgfplots}
+\pgfplotsset{width=10cm, compat=1.9}
+
+\begin{document}
+
+\textbf{\Huge Matrices}
+
+Athan Zhang \& Jeffrey Chen
+
+\section{Multivariable Linear Systems}
+
+\subsection{Row-Echelon Form}
+
+A multivariable linear system is a system of linear equations that has two or more variables. We've learned previously how to use elimination and substitution to solve such systems. These techniques can be used to convert the system of equations into an equivalent triangular form, such as:
+\begin{align*}
+    x - 3y + 2z &= 6 \\
+    y + z &= 3 \\
+    z &= 2 
+\end{align*}
+This form, also known as \textbf{row-echelon} form, is called triangular because the equations seem to make a triangle shape, with the leading coefficients of each equation being 1 and the last equation only having one variable. Once the system has converted to this form, the solutions can be found by substitution. The final equation in the system determines the final variable. In our example, that means $z = 2$. We then substitute that into our second equation.
+\begin{align*}
+    y + z &= 3 & \text{Second Equation} \\
+    y + (2) &= 3 & \text{Substitution} \\
+    y &= 1 & \text{Solve for y}
+\end{align*}
+We can then substitute for $y$ and $z$ in the first equation.
+\begin{align*}
+    x - 3y + 2z &= 6 & \text{First Equation} \\
+    x - 3(1) + 2(2) &= 6 & \text{Substitution} \\
+    x + 1 &= 4 & \text{Simplify} \\
+    x &= 3 & \text{Solve for x} \\
+\end{align*}
+
+\subsection{Gaussian Elimination}
+
+We've previously discussed how to solve a system in row-echelon form, but we must learn how to transform an original system of equations into the desired form. The algorithm to do this is called \textbf{Gaussian Elimination} and uses a set of operations given by the following.
+
+\subsubsection*{Operations that make Equivalent Systems}
+Each of the following rules produces an equivalent system of linear equations to the original.
+\begin{itemize}
+    \item Interchange two equations
+    \item Multiply an equation by a nonzero real number
+    \item Add a multiple of one equation to another equation
+\end{itemize}
+
+\section{Systems Using Matrices}
+
+\subsection{Matrices}
+A \textbf{matrix} is a rectangular array of numbers commonly used to represent sets of information in math and engineering. Rows refer to horizontal strips of the array, and columns refer to vertical strips. A matrix's dimension refers to the number of rows and columns it has. A matrix with $m$ rows and $n$ columns is referred to as an $m \times n$ matrix. The $(i, j)$-th element of a matrix refers to the element in the $i$-th row and $j$-th column of the matrix.
+
+\subsection{Augmented Matrices}
+An \textbf{augmented matrix} of a system is derived from the coefficients and constant terms of the linear equations and represents the system in matrix form. All the numbers are taken and written as constants. For example, the augmented matrix for the following system of equations
+\begin{align*}
+    5x + 3y -2z &= 3 \\
+    x + 2y + 3z &= 4 \\
+    3x -4x - z &= -3 \\
+\end{align*}
+would be
+\begin{align*}
+    \begin{bmatrix}
+        5 & 3 & -2 & | & 3 \\
+        1 & 2 & 3 & | & 4\\
+        3 & -4 & -1 & | & -3 \\
+    \end{bmatrix}
+\end{align*}
+
+If we only took the coefficients, it would be called the \textbf{coefficient matrix}.
+\begin{align*}
+    \begin{bmatrix}
+        5 & 3 & -2 \\
+        1 & 2 & 3\\
+        3 & -4 & -1\\
+    \end{bmatrix}
+\end{align*}
+
+The same techniques employed to manipulate multivariable systems of equations can be modeled with matrices. Each row in an augmented matrix corresponds to an equation of the original system, so the previous operations used in Gaussian elimination can once again be used to reduce the augmented matrix. These operations are called elementary row operations.
+\subsubsection*{Elementary Row Operations}
+Each of the following row operations produces an equivalent system augmented matrix.
+
+While the row operations are simple, it is quite easy to make a mistake from step to step. That is why it's important to record the operation performed from augmented matrix to augmented matrix with the following notation.
+
+\begin{itemize}
+    \item Interchange two rows ($R_1 \leftrightarrow R_2$)
+    \item Multiply a row by a nonzero real number ($R_1 \rightarrow \frac{1}{3}R_1$)
+    \item Add a multiple of one row to another row ($R_1 \rightarrow R_1 + 3R_2$)
+\end{itemize}
+
+\subsection{Row-Echelon Form}
+
+Once again, an augmented matrix that corresponds to the row-echelon form of the original system of equations is also said to be in row-echelon form.
+\begin{align*}
+    \begin{bmatrix}
+        1 & a & b & | & c \\
+        0 & 1 & d & | & e \\
+        0 & 0 & 1 & | & f \\
+        0 & 0 & 0 & | & 0 \\
+    \end{bmatrix}
+\end{align*}
+\begin{itemize}
+    \item Rows consisting of entirely zeros (if any) appear at the bottom of the matrix
+    \item The first nonzero entry in a row is 1, called the leading 1
+    \item For two successive nonzero rows, the leading 1 in the higher row is farther to the left than the leading 1 in the lower row.
+\end{itemize}
+
+\subsection{Reduced Row-Echelon Form}
+
+If you continue to apply elementary row operations to the row-echelon form of an augmented matrix, you will obtain a matrix in which the first nonzero element of each row is 1, and the rest are zeros. This is called the \textbf{reduced row-echelon form} of the matrix.
+\begin{align*}
+    \begin{bmatrix}
+        1 & 0 & 0 & | & a \\
+        0 & 1 & 0 & | & b \\
+        0 & 0 & 1 & | & c \\
+        0 & 0 & 0 & | & 0 \\    
+    \end{bmatrix}
+\end{align*}
+The steps taken to transform an augmented matrix to the reduced row-echelon form is called \textbf{Gauss-Jordan Elimination}.
+
+When solving a system of equations, if a matrix cannot be written in reduced row-echelon form, then the system either has no solution or infinitely many solutions. If we get a row of entirely zeros, then there are infinite solutions. If there is a row entirely of zeros except for the constant term (the number on the right of the vertical line), then there are no solutions.
+
+Furthermore, if there are more columns than rows, meaning that there are more variables than equations, then there are, once again, either no solutions or infinite solutions.
+
+\section{Matrix Operations}
+
+\subsection{Matrix Addition}
+
+Matrix addition is as simple as adding each respective element in either matrix to one another. It is required that both matrices have the same dimensions.
+\begin{align*}
+    \begin{bmatrix}
+        a_{11} & a_{12} & a_{13} \\
+        a_{21} & a_{22} & a_{23} \\
+    \end{bmatrix}
+    +
+    \begin{bmatrix}
+        b_{11} & b_{12} & b_{13} \\
+        b_{21} & b_{22} & b_{23} \\
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        a_{11} + b_{11} & a_{12} + b_{12} & a_{13} + b_{13} \\
+        a_{21} + b_{21} & a_{22} + b_{22} & a_{23} + b_{23} \\
+    \end{bmatrix}
+\end{align*}
+
+\subsection{Scalar Multiplication}
+
+Scalar multiplication is as simple as multiplying each element in a matrix with a scalar constant. There are no other requirements.
+\begin{align*}
+    k\begin{bmatrix}
+        a_{11} & a_{12} & a_{13} \\
+        a_{21} & a_{22} & a_{23} \\
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        ka_{11} & ka_{12} & ka_{13} \\
+        ka_{21} & ka_{22} & ka_{23} \\
+    \end{bmatrix}
+\end{align*}
+
+\subsection{Matrix Multiplication}
+
+Matrix multiplication is an essential operation in linear algebra, used to combine two matrices to produce a resulting matrix. The resulting matrix's dimensions depend on the number of rows and columns in the matrices being multiplied.
+
+Given two matrices $A$ and $B$, where $A$ has dimensions $m \times r$ and $B$ has dimensions $r \times n$, the resulting matrix $C$ will have dimensions $m \times n$.
+
+Let $A = [a_{ij}]$ and $B = [b_{ij}]$ be the matrices to be multiplied. The $(i, j)$-th element of the resulting matrix $C = [c_{ij}]$ is computed as follows:
+
+\begin{align*}
+    c_{ij} = a_{i1}b_{1j} + a_{i2}b_{2j} + \ldots + a_{ir}b_{rj} = \sum_{k=1}^{r} a_{ik}b_{kj}   
+\end{align*}
+
+\begin{align*}
+    \begin{bmatrix}
+        a_{11} & a_{12} & \dots & a_{1r} \\
+        a_{21} & a_{22} & \dots & a_{2r} \\
+        \vdots & \vdots & \dots & \vdots \\
+        a_{i1} & a_{i2} & \dots & a_{ir} \\
+        \vdots & \vdots & \ddots& \vdots \\
+        a_{m1} & a_{m2} & \dots & a_{mr} \\
+    \end{bmatrix}
+    \cdot
+    \begin{bmatrix}
+        b_{11} & b_{12} & \dots & b_{1j} & \dots & b_{1n} \\
+        b_{21} & b_{22} & \dots & b_{2j} & \dots & b_{2n} \\
+        \vdots & \vdots & \dots & \vdots & \ddots& \vdots \\
+        b_{r1} & b_{r2} & \dots & b_{rj} & \dots & b_{rm} \\
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        c_{11} & c_{12} & \dots & c_{1j} & \dots & c_{1n} \\
+        c_{21} & c_{22} & \dots & c_{2j} & \dots & c_{2n} \\
+        \vdots & \vdots & \ddots& \vdots & \ddots& \vdots \\
+        c_{i1} & c_{i2} & \dots & c_{ij} & \dots & c_{in} \\
+        \vdots & \vdots & \ddots& \vdots & \ddots& \vdots \\
+        c_{m1} & c_{m2} & \dots & c_{mj} & \dots & c_{mn} \\
+    \end{bmatrix}
+\end{align*}
+
+
+
+In this computation, each element in the $i$-th row of matrix $A$ is multiplied by the corresponding element in the $j$-th column of matrix $B$, and the products are summed up to obtain the element in the resulting matrix $C$.
+
+Matrix multiplication is not commutative, meaning that in general, $AB \neq BA$. Additionally, the number of columns in the first matrix must be equal to the number of rows in the second matrix for the multiplication to be defined. However, there are still some properties of real numbers that do hold for matrix multiplication.
+
+\subsubsection*{Properties of Matrix Multiplication}
+For any matrices $A$, $B$, and $C$ for which the matrix product is defined, the following properties are true.
+\begin{itemize}
+    \item Associative Property of Matrix Multiplication: (AB)C = A(BC) 
+    \item Associate Property of Scalar Multiplication: k(AB) = (kA)B = A(kB)
+    \item Left Distributive Property: C(A + B) = CA + CB 
+    \item Right Distributive Property: (A + B)C = AC + BC
+\end{itemize}
+
+\section{Identity Matrix}
+The identity matrix is characterized by having ones along its main diagonal (from the top left to the bottom right) and zeros elsewhere. More formally, the $(i, j)$-th element of the identity matrix $I$ is defined as:
+
+\begin{align*}
+    I_{ij} = \begin{cases} 
+          1 & \text{if } i = j \\
+          0 & \text{if } i \neq j
+       \end{cases}    
+\end{align*}
+
+For example, the $2 \times 2$ identity matrix is:
+
+\[
+I = \begin{bmatrix}
+1 & 0 \\
+0 & 1 \\
+\end{bmatrix}
+\]
+
+And the $3 \times 3$ identity matrix is:
+
+\[
+I = \begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+\end{bmatrix}
+\]
+
+The identity matrix plays a fundamental role in linear algebra. When a matrix $A$ is multiplied by the identity matrix of the appropriate size, the result is the original matrix $A$ itself. That is, for any matrix $A$ of compatible size:
+
+\[
+A \cdot I = I \cdot A = A
+\]
+
+This property makes the identity matrix analogous to the number 1 in ordinary arithmetic. It serves as an identity element for matrix multiplication, just as 1 is the identity element for scalar multiplication.
+
+\section{Inverse Matrix}
+
+Let's assume we have a matrix $A$ that is $n\times n$. If there exists a matrix $B$ such that $AB = BA = I_n$, then $B$ is called the inverse of $A$ and can also be rewritten as $A^{-1}$, similar to multiplicative inverses. Remember that only square matrices have inverses.
+
+If a matrix has an inverse, than it is said to be \textbf{invertible} or \textbf{nonsingular}. On the other hand, a \textbf{singular matrix} does not have an inverse. Not all square matrices are invertible. To find the inverse of a square matrix $A$, we must solve the matrix equation $AA^{-1} = I_n$. 
+
+For example, let's say we have the following matrix
+\begin{align*}
+    A =
+    \begin{bmatrix}
+        8 & -5 \\
+        -3 & 2 \\
+    \end{bmatrix}
+\end{align*}
+and that 
+\begin{align*}
+    A^{-1} = 
+    \begin{bmatrix}
+        a & b \\
+        c & d \\
+    \end{bmatrix}
+\end{align*}
+We can get the following equation
+\begin{align*}
+    AA^{-1} = I_n \implies 
+    \begin{bmatrix}
+        8 & -5 \\
+        -3 & 2 \\
+    \end{bmatrix}
+    \begin{bmatrix}
+        a & b \\
+        c & d \\
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        1 & 0 \\
+        0 & 1 \\
+    \end{bmatrix}
+\end{align*}
+This can then be converted into a doubly augmented matrix $[A|I]$, giving us
+\begin{align*}
+    \begin{bmatrix}
+        8 & -5 & | & 1 & 0 \\
+        -3 & 2 & | & 0 & 1 \\
+    \end{bmatrix}
+\end{align*}
+Then, by converting this matrix to a reduced row-echelon form, the matrix on the right side of the vertical line will be our inverse.
+
+\subsection{Solving Equations with Inverse Matrices}
+
+If a system of linear equations has the same number of equations as variables, then its coefficient matrix is square and the system is said to be a \textbf{square system}. If the coefficient matrix is invertible, then we can use the inverse matrix to solve the equation.
+\begin{align*}
+    Ax = B \implies A^{-1}Ax = A^{-1}B = x
+\end{align*}
+
+\section{Determinants}
+
+The determinant of a square matrix is a scalar that is defined by the entries in the matrix. It represents the properties of the matrix, and is used to find many other important values and results of the matrix. 
+
+There is a general method to find the determinant of any square matrix, but it is rather complicated. For the purposes of precalculus, students only need to know how to find the determinant of 2$\times$2 and 3$\times$3 matrices.
+
+For a 2$\times$2 matrix:
+\begin{align*}
+    \det (A) = |A| =
+    \begin{vmatrix}
+        a & b \\
+        c & d \\
+    \end{vmatrix}
+    = ad - bc
+\end{align*}
+
+For a 3$\times$3 matrix:
+\begin{align*}
+    \det (A) = |A| =
+    \begin{vmatrix}
+        a & b & c \\
+        d & e & f \\
+        g & h & i
+    \end{vmatrix}
+    = a\begin{vmatrix}
+        e & f \\
+        h & i \\
+    \end{vmatrix}
+    -b\begin{vmatrix}
+        d & f \\
+        g & i \\
+    \end{vmatrix}
+    +c\begin{vmatrix}
+        d & e \\
+        g & h \\
+    \end{vmatrix}
+\end{align*}
+
+\subsection{Finding Inverses}
+
+The determinant is helpful in finding the inverse of 2$\times$2 matrices. There is a unique theorem that states that the inverse of 2$\times$2 matrix $A$ is given as
+\begin{align*}
+    A^{-1} = \frac{1}{\det (A)}
+    \begin{bmatrix}
+        d & -b \\
+        -c & a \\
+    \end{bmatrix}
+\end{align*}
+
+\subsection{Finding Cross Products}
+
+Last unit, students learned about the cross product between two 3-dimensional vectors. The formula given for the cross product seemed complicated and perhaps random, but in the context of matrices and determinants, it can be expressed in a much cleaner way. Given the two vectors $\vec{a}$ and $\vec{b}$: 
+
+\begin{align*}
+    \vec{a} &= a_x \hat{i} + a_y \hat{j} + a_z \hat{k} \\
+    \vec{b} &= b_x \hat{i} + b_y \hat{j} + b_z \hat{k}
+\end{align*}
+
+We can define the following matrix $M$:
+
+\begin{align*}
+    \begin{bmatrix}
+    \hat{i} & \hat{j} & \hat{k} \\
+    a_x & a_y & a_z \\
+    b_x & b_y & b_z 
+    \end{bmatrix}
+\end{align*}
+
+Then, the cross product of $\vec{a}$ and $\vec{b}$ can be defined as the following: 
+
+\begin{align*}
+    \vec{a} \times \vec{b} &= \det(M)
+\end{align*}
+
+\section{Cramer's Rule}
+
+Cramer's Rule is a method used to solve systems of linear equations by expressing the solution in terms of determinants. It provides an alternative approach when the system has a unique solution and the coefficient matrix is invertible.
+
+Consider a system of $n$ linear equations with $n$ variables:
+
+\[
+\begin{aligned}
+a_{11}x_1 + a_{12}x_2 + \ldots + a_{1n}x_n &= b_1 \\
+a_{21}x_1 + a_{22}x_2 + \ldots + a_{2n}x_n &= b_2 \\
+\vdots \\
+a_{n1}x_1 + a_{n2}x_2 + \ldots + a_{nn}x_n &= b_n \\
+\end{aligned}
+\]
+
+Let $A$ be the coefficient matrix, $X$ be the column matrix of variables $(x_1, x_2, \ldots, x_n)$, and $B$ be the column matrix of constants $(b_1, b_2, \ldots, b_n)$. Cramer's Rule states that the solution for the variables can be expressed as:
+
+\[
+x_i = \frac{{\det(A_i)}}{{\det(A)}}
+\]
+
+where $A_i$ is the matrix obtained by replacing the $i$-th column of $A$ with $B$. $\det(A)$ represents the determinant of the coefficient matrix $A$.
+
+It is important to note that Cramer's Rule is only applicable when the coefficient matrix $A$ is invertible, i.e., when $\det(A) \neq 0$. If $\det(A) = 0$, Cramer's Rule cannot be used to find a unique solution.
+
+\end{document}

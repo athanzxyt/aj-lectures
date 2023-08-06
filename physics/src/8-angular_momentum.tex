@@ -1,0 +1,98 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{parskip}
+\usepackage{amsmath}
+
+\usepackage{pgfplots}
+\pgfplotsset{width=10cm, compat=1.9}
+\usetikzlibrary{angles, quotes}
+
+\begin{document}
+
+\textbf{\Huge Angular Momentum}
+
+Athan Zhang \& Jeffrey Chen
+
+\section{Vector Nature of Rotation}
+
+To indicate the direction of rotation about a fixed axis, we use an angular velocity vector. The direction of the vector is parallel to the axis of rotation. The sign of the vector determines whether or not it is rotating clockwise or counterclockwise. 
+
+A simple way to understand this is to use the \textbf{right-hand rule.} Imagine you have a rotating object or system in three-dimensional space. To apply the right-hand rule for rotation, follow these steps:
+
+\begin{enumerate}
+  \item \textbf{Thumb}: Extend your right hand and align your thumb with the axis of rotation. The axis of rotation is the imaginary line around which the object or system is rotating.
+
+  \item \textbf{Fingers}: Curl your fingers in the direction of rotation. Your fingers will now indicate the direction in which the object or system is rotating.
+\end{enumerate}
+
+The right-hand rule can be applied for all vectors that represent rotation, such as torque. However, it is important to first understand what the cross-product of two vectors is.
+
+\subsection{The Cross Product}
+The \textbf{cross product} is another important product involving two vectors in space. The cross product of two vectors results in a third vector, unlike the dot product. If $\Vec{A} = \langle A_x, A_y, A_z\rangle$ and $\Vec{B} = \langle B_x, B_y, B_z\rangle$, then their cross product is found as follows:
+\begin{align*}
+    \Vec{A} \times \Vec{B} = \langle A_yB_z - A_zB_y, A_zB_x - A_xB_z, A_xB_y - A_yB_x \rangle
+\end{align*}
+The resulting vector from a cross-product between two vectors is always perpendicular to the plane containing the two original vectors. For example, the cross product between one vector parallel to the $x$-axis and another vector parallel to the $y$-axis would be parallel to the $z$-axis.
+
+To simply find the magnitude of the cross-product, we can use the following formula
+\begin{align*}
+    \Vec{A} \times \Vec{B} = AB\sin\theta \hat{n}
+\end{align*}
+where $\theta$ is defined as the angle between the two vectors and $\hat{n}$ is defined as a unit vector perpendicular to each vector. Its direction is described by another \textbf{right-hand rule.}.
+
+\begin{enumerate}
+    \item \textbf{Index Finger}: Extend your index finger and point it in the direction of $\Vec{A}$. 
+    \item \textbf{Palm}: Now have your palm facing the same direction of $\Vec{B}$. If a vector was drawn perpendicular out of the face of your palm, it should be parallel to the vector.
+    \item \textbf{Thumb}: Extend your thumb upward perpendicular to your index finger. This is the direction of the vector result from the cross-product.
+\end{enumerate}
+
+\section{Angular Momentum}
+
+Whereas Torque is expressed mathematically as the cross product of a displacement and force vector
+\begin{align*}
+    \Vec{\tau} = \Vec{r} \times \Vec{F}
+\end{align*}
+The rotational analog to momentum called angular momentum, is expressed as the cross-product between the displacement and momentum vectors.
+\begin{align*}
+    \Vec{L} = \Vec{r} \times \Vec{p}
+\end{align*}
+For a system of bodies, if the particles are rotating about a given symmetry axis, the angular momentum of the system can be given as
+\begin{align*}
+    \Vec{L} = I\Vec{\omega}
+\end{align*}
+where $I$ is the moment of inertia of the system about the symmetry axis and $\omega$ is the angular velocity of the system.
+
+\subsection{Rotating and Translating Systems}
+
+There are many systems where bodies may rotate around an intrinsic axis of rotation yet also rotate around another symmetry axis. The best example of this would be planets in orbit. Each planetary body has its own internal rotation and a rotation around a central star. To angular momentum of this system can be calculated as the angular momentum around the center of mass of the body plus the angular momentum associated with the motion of the center of mass about the symmetry point.
+\begin{align*}
+    \Vec{L} = \Vec{L}_{\text{orbit}} + \Vec{L}_{\text{spin}}
+\end{align*}
+
+\section{Conservation of Angular Momentum}
+
+According to the law of conservation of angular momentum, the total angular momentum of an isolated system remains constant over time, provided there are no external torques acting on the system. Mathematically, this can be expressed as:
+
+\begin{align*}
+    \frac{{dL}}{{dt}} = 0
+\end{align*}
+
+In simpler terms, if no net external torque is applied to a rotating system, its total angular momentum will remain unchanged.
+
+\subsection{Examples of Conservation of Angular Momentum}
+
+The conservation of angular momentum has several important consequences and applications in various physical systems. Some examples include:
+
+\begin{itemize}
+  \item \textbf{Planetary Motion}: The conservation of angular momentum plays a crucial role in explaining the motion of planets around the Sun. As a planet moves closer to the Sun during its orbit, its angular velocity increases, while its moment of inertia remains relatively constant. As a result, the planet's angular momentum remains conserved, leading to the conservation of its orbital properties.
+  
+  \item \textbf{Ice Skater's Spin}: When an ice skater pulls their arms closer to their body during a spin, their moment of inertia decreases. To conserve angular momentum, their angular velocity must increase, resulting in faster rotation. Conversely, when they extend their arms, their moment of inertia increases, and their angular velocity decreases.
+  
+  \item \textbf{Satellite Motion}: Artificial satellites in space, such as those orbiting the Earth, follow the principle of conservation of angular momentum to maintain their orbits without external propulsion. By adjusting their shape or mass distribution, they can control their rotational motion and remain in stable orbits.
+\end{itemize}
+
+The conservation of angular momentum is a powerful concept that helps explain a wide range of rotational phenomena in the universe.
+
+\end{document}

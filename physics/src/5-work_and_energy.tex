@@ -1,0 +1,297 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{parskip}
+\usepackage{amsmath}
+
+\usepackage{pgfplots}
+\pgfplotsset{width=10cm, compat=1.9}
+\usetikzlibrary{angles, quotes}
+
+\begin{document}
+
+\textbf{\Huge Work and Energy}
+
+Athan Zhang \& Jeffrey Chen
+
+\section{Work}
+
+Work and Energy are important concepts in physics as well as in everyday life. The concept of energy is closely associated with that of work. Work is essentially the transfer of energy from one system to another. 
+
+The work $W$ done by a constant force $\mathbf{\Vec{F}}$ whose point of application moves through a distance $\Delta x$ is defined to be
+\begin{align*}
+    W = F\cdot \Delta x = F\cos\theta \Delta x = F_x \Delta x
+\end{align*}
+where $\theta$ is the angle between $\mathbf{\Vec{F}}$ and the axis of displacement. Thus, work can be calculated as the dot product between the force and displacement vectors. 
+
+Work is a scalar quantity that is positive if $\Delta x$ and $F_x$ have the same signs and is negative if they are opposite. The dimensions of work are those of force times distance. The metric unit of work and energy is the \textbf{joule} (J), which is calculated as
+\begin{align*}
+    1 \text{ J} = 1 \text{ N}\cdot \text{m}
+\end{align*}
+
+\subsection{Multiple Forces}
+
+When several forces do work, the total work is found by computing the work done by each force and summing them together.
+\begin{align*}
+    \displaystyle W_\text{total} &= \sum F_{i,x} \Delta x_{i} \\
+    &= F_{1,x}\Delta x_1 + F_{2,x}\Delta x_2 + F_{3,x}\Delta x_3 + \dots
+\end{align*}
+However, when the forces do work on a single \textit{particle}, that is, the forces all act on the same point, the displacement due to the force will be the same for each force and is equal to $\Delta x$.
+\begin{align*}
+    W_\text{total} &= \sum F_{i,x} \Delta x \\
+    &=  F_{1,x}\Delta x + F_{2,x}\Delta x + F_{3,x}\Delta x + \dots \\
+    &= (F_{1,x} + F_{2,x} + F_{3,x} + \dots)\Delta x \\
+    &= F_{\text{net},x}\Delta x
+\end{align*}
+
+\subsection{Variable Force}
+However, not all forces are constant. For example, a spring exerts a force proportional to the distance it has been stretched or compressed, and the gravitational force varies inversely with the square of the distance between two objects. 
+
+Thus, work can be modeled with an integral.
+\begin{align*}
+    W = \int_{x_{1}}^{x_{2}} F_x dx 
+\end{align*}
+However, since we know work is the dot product between force and displacement, we can write this as
+\begin{align*}
+    W = \int_{s_1}^{s_2}\mathbf{\Vec{F}}\cdot d\mathbf{\Vec{s}}
+\end{align*}
+Where $s$ is an infinitely small displacement along a curved path, this definition also extends the previous equation for work to higher dimensions.
+
+\section{Work-Kinetic Energy Theorem}
+
+There is a clear relationship between the total work done on a particle and the initial and final speeds of the particle. If $F_x$ is the net force acting on a particle, Newton's second law gives
+\begin{align*}
+    F_x = ma_x
+\end{align*}
+Relating this to our previously derived formula, we get
+\begin{align*}
+    W_\text{total} = ma_x \Delta x
+\end{align*}
+If we assume the force is constant, we can use the kinematic equations to relate the distance the particle moves with its initial and final velocities.
+\begin{align*}
+    v_f^2 = v_i^2 + 2a_x\Delta x\\
+    v_f^2 - v_i^2 = 2a_x\Delta x\\
+    \frac{1}{2}(v_f^2 - v_i^2) = a_x\Delta x \\
+    \frac{1}{2}m(v_f^2 - v_i^2) = ma_x\Delta x \\
+    \frac{1}{2}m(v_f^2 - v_i^2) = W_\text{total} \\
+\end{align*}
+Earlier, it was explained that work is energy transfer between systems. In this case, work can be thought of as the change of \textbf{kinetic energy}, K.
+\begin{align*}
+    K = \frac{1}{2}mv^2
+\end{align*}
+Thus,
+\begin{align*}
+    W_\text{total} = \Delta K = \frac{1}{2}mv_f^2 - \frac{1}{2}mv_i^2
+\end{align*}
+This result is known as the Work-Kinetic energy theorem. It holds whether the net force is constant or variable. 
+
+\subsection{Higher Dimensions}
+Return to our integral dot product definition of work. Here we consider a small displacement $\Delta s$, where $s$ is the distance measured along a curve. $\mathbf{\Vec{F}}$ has components $F_s$ parallel to and $F_\perp$ perpendicular to the displacement. Since $F_\perp$ is perpendicular to the displacement, it contributes nothing to the work done on the particle. 
+\begin{align*}
+    W = \int_{s_1}^{s_2} F_s ds
+\end{align*}
+From Newton's second law, we know that
+\begin{align*}
+    F_s = m \frac{dv}{dt}
+\end{align*}
+If we treat velocity as a function of the distance $s$, we can use the chain rule to break down this definition
+\begin{align*}
+    \frac{dv}{dt} = \frac{dv}{ds}\frac{ds}{dt} = v\frac{dv}{ds}
+\end{align*}
+Then,
+\begin{align*}
+    W &= \int_{s_1}^{s_2} F_s ds \\
+    &= \int_{s_1}^{s_2} m\frac{dv}{dt}ds \\
+    &= \int_{s_1}^{s_2} mv\frac{dv}{ds}ds \\
+    &= \int_{v_1}^{v_2} mv dv \\
+    &= \frac{1}{2}mv_2^2 - \frac{1}{2}mv_1^2
+\end{align*}
+Once again, we reaffirm the Work-Kinetic energy theorem.
+
+\section{Power}
+Power $P$ is defined as the rate at which a force does work. Consider a particle moving with instantaneous velocity $\mathbf{\Vec{v}}$. In a short time interval $dt$, the particle has displacement $d\mathbf{\Vec{s}} = \mathbf{\Vec{v}}dt$. 
+\begin{align*}
+    dW = \mathbf{\Vec{F}}\cdot d\mathbf{\Vec{s}} = \mathbf{\Vec{F}}\cdot\mathbf{\Vec{v}}dt
+\end{align*}
+Then we can calculate power as
+\begin{align*}
+    P = \frac{dW}{dt} = \mathbf{\Vec{F}}\cdot\\mathbf{Vec{v}}
+\end{align*}
+The metric unit of power is one joule per second, which is called a watt (W).
+\begin{align*}
+    1\text{ W} = 1\text{ J}/\text{s}
+\end{align*}
+Remember, there is a difference between power and work. Two people who push a heavy box the same distance do the same amount of work, but the one that does it in the least time exerts more power. 
+
+\section{Potential Energy}
+We've talked about kinetic energy and how it relates the movement of a particle to energy. However, often when external forces act on a system, it does not increase the kinetic energy of the system; rather, that energy is stored as potential energy. 
+
+\subsection{Potential Energy and Conservative Forces}
+
+In physics, potential energy is a fundamental concept related to the stored energy of a system. When dealing with conservative forces, which are forces that do not depend on the path taken but only on the initial and final positions, potential energy becomes particularly useful.
+
+Take, for example, a person lifting a block of mass $m$ up a distance $h$. The person did $mgh$ work. However, since the gravitational pull of the earth did $-mgh$ work, the kinetic energy of the block does not increase as the total work on the block is zero. If we consider the block and the earth to be a system, we know that the person exerted $mgh$ work on the block, but we also know that the block is not moving, so where did the energy go? The $mgh$ work is stored as potential energy in the block. We can think of this as if the person dropped the block from the new height, it would have a higher final velocity than it would've before because of the increased \textit{potential} energy from its new height.
+
+\subsection{Definition of Potential Energy}
+
+Potential energy, denoted by $U$, is defined as the energy associated with the position or configuration of an object within a system. It is a scalar quantity and is typically measured in joules (J).
+
+For a conservative force, the potential energy is defined as the negative of the work done by that force in bringing the object from a reference point to its current position. Mathematically, it can be expressed as:
+
+\begin{align*}
+    U = -W
+\end{align*}
+
+In the previous example, the earth-block system did $-mgh$ work, so the potential energy increased by $mgh$, Where $W$ represents the work done by the conservative force.
+
+\subsection{Conservative Forces}
+
+Conservative forces are those for which the work done is independent of the path taken. In other words, the total work done by a conservative force in moving an object between two points is the same regardless of the specific route taken between those points. Examples of conservative forces include gravity, electrostatic forces, and spring forces.
+
+\subsection{Potential Energy Functions}
+Since work done by a conservative force does not depend on a path but only the initial and final states, we can use this property to define a potential-energy function $U$ that is associated with the conservative force. We define the potential energy function done by a conservative force to be the decrease in the potential-energy function.
+\begin{align*}
+    W = \int \mathbf{\Vec{F}}\cdot d\mathbf{\Vec{s}} = -\Delta \mathrm{U}
+\end{align*}
+Which becomes
+\begin{align*}
+    d\mathrm{U} = -\mathbf{\Vec{F}}\cdot d\mathbf{\Vec{s}}
+\end{align*}
+for infinitesimal displacement. 
+
+\subsubsection{Gravitational Potential Energy}
+We can calculate the potential energy function due to the gravitational force near the surface of the earth. If we assume force to be $\mathbf{\Vec{F}} = -mg\hat{j}$, we have
+\begin{align*}
+    dU = -\mathbf{\Vec{F}}\cdot d\mathbf{\Vec{s}} = -(-mg\hat{j})\cdot(dx\hat{i} + dy\hat{j} + dz\hat{k}) = mg\;dy
+\end{align*}
+By integrating, we get
+\begin{align*}
+    U &= \int mg\;dy \\
+    U &= mgy + U_0 \\
+\end{align*}
+
+\subsubsection{Potential Energy of a Spring}
+We know that the force produced by a spring is given as $\mathbf{\Vec{F}} = -kx$. We can then calculate the potential energy function of a spring. 
+\begin{align*}
+    dU = -\mathbf{\Vec{F}}\cdot d\mathbf{\Vec{s}} = -F_x dx = -(-kx)dx = kdx\;dx
+\end{align*}
+Then becomes
+\begin{align*}
+    U &= \int kx\;dx \\
+    &= \frac{1}{2}kx^2 + U_0
+\end{align*}
+We can assume $U_0 = 0$ when $x = 0$ because when a spring is unstretched, it has no potential energy.  
+
+\subsection{Nonconservative Forces}
+
+Not all forces are conservative forces. Take, for example, the force due to friction. No matter what direction an object is pushed along the surface of another object, the force of kinetic friction is always opposite the direction of motion, so the work it does is always negative, and a round trip of work can not equal zero. 
+
+Non-conservative forces convert mechanical energy into other forms of energy, such as heat or sound. This energy transformation leads to a decrease in the total mechanical energy of the system. The work done by a non-conservative force is equal to the change in mechanical energy, which is the sum of the change in kinetic energy and the change in potential energy.
+
+\begin{align*}
+    W_{\text{nc}} = \Delta K
+\end{align*}
+
+\section{Stable and Unstable Equilibrium}
+
+An object is in equilibrium if the net force on it is zero. However, not all equilibria are the same. Equilibria can be classified as either stable or unstable, depending on the object's response to small disturbances.
+
+\subsection{Stable Equilibrium}
+
+Stable equilibrium occurs when a small displacement from the equilibrium position causes the object to experience a restoring force that brings it back to the original position. In other words, the system returns to its equilibrium state after being disturbed. 
+
+Mathematically, stable equilibrium can be characterized by the condition that the potential energy of the system is at a minimum at the equilibrium position. 
+
+The potential-energy $U$ function versus $x$ shows what a stable equilibrium looks like.
+
+\begin{center}
+    \begin{tikzpicture}
+    \begin{axis}[
+    xlabel=$x$,
+    ylabel=$U$,
+    xmin=-6,
+    xmax=6,
+    ymin=0,
+    ymax=40,
+    ticks=none,
+    domain=-6:6,
+    samples=100,
+    axis lines=middle, width=8cm, height=6cm,
+    smooth]
+      
+    \addplot[blue, thick] {x^2};
+    
+    \end{axis}
+    \end{tikzpicture}
+\end{center}
+
+A small displacement in either direction results in a force directed toward the equilibrium point.
+
+\subsection{Unstable Equilibrium}
+
+Unstable equilibrium, on the other hand, occurs when a small displacement from the equilibrium position causes the object to experience a net force that pushes it further away from the original position. In this case, the system does not return to its equilibrium state but moves away from it.
+
+Mathematically, unstable equilibrium can be characterized by the condition that the potential energy of the system is at a maximum at the equilibrium position. 
+
+
+The potential-energy $U$ function versus $x$ shows what an ustable equilibrium looks like.
+
+\begin{center}
+    \begin{tikzpicture}
+    \begin{axis}[
+    xlabel=$x$,
+    ylabel=$U$,
+    xmin=-6,
+    xmax=6,
+    ymin=0,
+    ymax=40,
+    ticks=none,
+    domain=-6:6,
+    samples=100,
+    axis lines=middle, width=8cm, height=6cm,
+    smooth]
+      
+    \addplot[blue, thick] {36 - x^2};
+    
+    \end{axis}
+    \end{tikzpicture}
+\end{center}
+
+A small displacement in either direction results in a force directed away from the equilibrium point.
+
+\subsection{Neutral Equilibrium}
+
+In addition to stable and unstable equilibrium, there is a third type called neutral equilibrium. In neutral equilibrium, a small displacement from the equilibrium position does not cause any net force or torque on the object. As a result, the system remains in a displaced state without any tendency to return to its original position. An example of neutral equilibrium is a ball balanced on a flat surface.
+
+
+\section{Conservation of Energy}
+
+\subsection{Conservation of Mechanical Energy}
+
+When an internal conservative force does work on a system, that work is equal to the decrease in potential energy. If that conservative force is the only force that does work, the work it does also equal the increase in kinetic energy. This means that the decrease in potential energy equals the increase in kinetic energy. We refer to the sum of kinetic and potential energy as \textbf{mechanical energy}. 
+
+\begin{align*}
+    E_\text{mech} = K + U
+\end{align*}
+
+\subsection{Total Energy}
+
+The use of the conservation of energy is limited, however, because there are usually nonconservative forces present in a system. These nonconservative forces decrease the mechanical energy of the system. Yet it was found in the nineteenth century that the appearance of some other kind of energy, such as thermal energy, always accompanies the disappearance of macroscopic mechanical energy. We now know that on the microscopic scale, whenever the energy of a system changes, we account for that change by the appearance or disappearance of energy somewhere else. 
+\begin{align*}
+    E_{\text{sys}} = E_{\text{mech}} + E_{\text{ther}} + E_{\text{chem}} + E_{\text{other}}
+\end{align*}
+
+You may notice thermal energy primarily from thermal energy. For example, when you rub your hands together in the cold, you do work on your hands, but it isn't observed as mechanical energy. Instead, it is observed as thermal energy. 
+
+Another type of nonconservative force is associated with chemical reactions. For example, reduction-oxidation reactions in chemistry often result in heat release. Or when a human begins running from rest, internal chemical energy in our muscles is converted to kinetic energy and thermal energy.
+
+The energy of a system can also change because of some form of radiation, such as sound waves or electromagnetic waves.
+
+
+Although energy can change from one form to another, it can never be created or destroyed. The total energy of the universe is constant. That is the \textbf{Law of Conservation of Energy}. 
+
+\subsection{Quantization of Energy}
+Energy is also quantized, meaning that the transfer of energy is not continuous, but rather, it happens in small quantities called energy quanta. For a system oscillating with frequency $f$, the allowed energy values are separated by an amount $hf$, where $h$ is Planck's constant.
+
+\end{document}

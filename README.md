@@ -9,14 +9,14 @@ A collection of lecture notes from the A&J Math and Physics classes of Summer 20
 ## Syllabus
 
 **Calculus**
-1. [Limits and Continuity](calculus/1-limits_and_continuity.pdf)
-2. [Intro. to Derivatives](calculus/2-intro_to_deriv.pdf)
-3. [Contextual Applications of Derivatives](calculus/3-contextual_apps_of_deriv.pdf)
-4. [analytical_apps_of_derivs.pdf](4-analytical_apps_of_derivs.pdf)
-5. [intro_to_integrals.pdf](5-intro_to_integrals.pdf)
-6. [apps_of_integration.pdf](6-apps_of_integration.pdf)
-7. [differential_equations.pdf](7-differential_equations.pdf)
-8. [sequences_and_series.pdf](8-sequences_and_series.pdf)
+1. [Limits and Continuity](calculus/pdf/1-limits_and_continuity.pdf)
+2. [Intro. to Derivatives](calculus/pdf/2-intro_to_deriv.pdf)
+3. [Contextual Applications of Derivatives](calculus/pdf/3-contextual_apps_of_deriv.pdf)
+4. [Analytical Applications of Derivatives](calculus/pdf/4-analytical_apps_of_derivs.pdf)
+5. [Intro. to Integrals](calculus/pdf/5-intro_to_integrals.pdf)
+6. [Applications of Integrals](calculus/pdf/6-apps_of_integration.pdf)
+7. [Differential Equations](calculus/pdf/7-differential_equations.pdf)
+8. [Sequences and Series](calculus/pdf/8-sequences_and_series.pdf)
 
 
 ## Original Advertisement

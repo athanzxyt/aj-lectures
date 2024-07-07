@@ -8,6 +8,5 @@ A collection of lecture notes from the A&J Math and Physics classes of Summer 20
 
 ## Original Advertisement
 
-![alt text](http://url/to/img.png)
-
+![Flyer](https://github.com/athanzxyt/aj-lectures/blob/main/flyer.png)
 

@@ -10,3 +10,6 @@ A collection of lecture notes from the A&J Math and Physics classes of Summer 20
 
 ![Flyer](https://github.com/athanzxyt/aj-lectures/blob/main/flyer.png)
 
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)

@@ -6,5 +6,8 @@
 
 A collection of lecture notes from the A&J Math and Physics classes of Summer 2023. A&J was an entrepreneurial endeavor to help ambitious high school freshmen and sophomores prepare for difficult computational classes through close-knit and exhaustive classes.
 
+## Original Advertisement
+
+![alt text](http://url/to/img.png)
 
 

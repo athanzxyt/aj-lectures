@@ -6,6 +6,18 @@
 
 A collection of lecture notes from the A&J Math and Physics classes of Summer 2023. A&J was an entrepreneurial endeavor to help ambitious high school freshmen and sophomores prepare for difficult computational classes through close-knit and exhaustive classes.
 
+## Syllabus
+
+1. [limits_and_continuity.pdf](1-limits_and_continuity.pdf)
+2. [intro_to_deriv.pdf](2-intro_to_deriv.pdf)
+3. [contextual_apps_of_deriv.pdf](3-contextual_apps_of_deriv.pdf)
+4. [analytical_apps_of_derivs.pdf](4-analytical_apps_of_derivs.pdf)
+5. [intro_to_integrals.pdf](5-intro_to_integrals.pdf)
+6. [apps_of_integration.pdf](6-apps_of_integration.pdf)
+7. [differential_equations.pdf](7-differential_equations.pdf)
+8. [sequences_and_series.pdf](8-sequences_and_series.pdf)
+
+
 ## Original Advertisement
 
 ![Flyer](https://github.com/athanzxyt/aj-lectures/blob/main/flyer.png)
